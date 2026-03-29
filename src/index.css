@@ -1,0 +1,54 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+  --font-heading: "Inter", system-ui, -apple-system, sans-serif;
+
+  --color-bg: #ffffff;
+  --color-text: #000000;
+  --color-text-muted: #6b6b6b;
+  --color-accent: #753b16;
+  --color-accent-dark: #3c1205;
+  --color-accent-light: #a0664a;
+  --color-border: #e5e5e5;
+  --color-overlay: rgba(0, 0, 0, 0.6);
+
+  --spacing-margin: clamp(1rem, 4vw, 3rem);
+  --spacing-v-space: clamp(3rem, 8vw, 8rem);
+  --spacing-v-space-sm: clamp(1.5rem, 4vw, 3rem);
+  --spacing-gutter: clamp(0.5rem, 2vw, 1.5rem);
+
+  --animate-fade-in: fade-in 0.3s ease-out;
+  --animate-slide-up: slide-up 0.3s ease-out;
+  --animate-overlay-in: overlay-in 0.2s ease-out;
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slide-up {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes overlay-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    font-family: var(--font-sans);
+    color: var(--color-text);
+    background: var(--color-bg);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
