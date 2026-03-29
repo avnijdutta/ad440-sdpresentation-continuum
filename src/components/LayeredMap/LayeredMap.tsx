@@ -5,16 +5,25 @@ interface LayeredMapProps {
   baseImage: string;
   baseAlt: string;
   layers: LayerData[];
+  mode?: "toggle" | "radio";
 }
 
-export function LayeredMap({ baseImage, baseAlt, layers }: LayeredMapProps) {
+export function LayeredMap({ baseImage, baseAlt, layers, mode = "toggle" }: LayeredMapProps) {
   const [visibleLayers, setVisibleLayers] = useState<Record<string, boolean>>(
     () =>
       Object.fromEntries(layers.map((layer) => [layer.id, layer.defaultVisible]))
   );
 
-  function toggle(id: string) {
-    setVisibleLayers((prev) => ({ ...prev, [id]: !prev[id] }));
+  function handleSelect(id: string) {
+    if (mode === "radio") {
+      setVisibleLayers(
+        Object.fromEntries(
+          layers.map((l) => [l.id, l.id === id ? !visibleLayers[id] : false])
+        )
+      );
+    } else {
+      setVisibleLayers((prev) => ({ ...prev, [id]: !prev[id] }));
+    }
   }
 
   function clearAll() {
@@ -65,7 +74,7 @@ export function LayeredMap({ baseImage, baseAlt, layers }: LayeredMapProps) {
           return (
             <button
               key={layer.id}
-              onClick={() => toggle(layer.id)}
+              onClick={() => handleSelect(layer.id)}
               className={`cursor-pointer rounded-full px-4 py-1.5 text-xs font-medium tracking-wide transition-all duration-200 ${
                 active
                   ? "border border-accent bg-accent text-bg shadow-sm"
@@ -76,7 +85,7 @@ export function LayeredMap({ baseImage, baseAlt, layers }: LayeredMapProps) {
             </button>
           );
         })}
-        {anyActive && (
+        {mode === "toggle" && anyActive && (
           <button
             onClick={clearAll}
             className="cursor-pointer rounded-full px-4 py-1.5 text-xs font-medium tracking-wide text-text-muted transition-all duration-200 hover:text-text"

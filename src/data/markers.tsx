@@ -87,6 +87,7 @@ export const markers: MarkerData[] = [
             baseImage={gymBase}
             baseAlt="Gym floor plan"
             layers={gymLayers}
+            mode="radio"
           />
         ),
       },
