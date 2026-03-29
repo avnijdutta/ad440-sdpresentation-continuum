@@ -11,10 +11,10 @@ export function Header() {
   return (
     <header className="border-b border-border sticky top-0 bg-bg z-50">
       <div className="mx-[var(--spacing-margin)] flex items-center justify-between py-4">
-        <a href="#hero" className="text-sm font-semibold tracking-widest text-text uppercase no-underline">
+        <a href="#" className="text-sm font-semibold tracking-widest text-text uppercase no-underline shrink-0 mr-[var(--spacing-margin)]">
           Continuum
         </a>
-        <nav className="flex gap-6 overflow-x-auto">
+        <nav className="flex gap-6 overflow-x-auto scrollbar-hide">
           {navLinks.map((link) => (
             <a
               key={link.href}
