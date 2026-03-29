@@ -2,6 +2,7 @@ import { Header } from "./components/Layout/Header";
 import { Footer } from "./components/Layout/Footer";
 import { Section } from "./components/Layout/Section";
 import { FloorPlan } from "./components/FloorPlan/FloorPlan";
+import { SiteContext } from "./components/SiteContext/SiteContext";
 
 function App() {
   return (
@@ -22,6 +23,23 @@ function App() {
           Explore our facilities through the interactive floor plan below. Click
           any marker to learn more about each area.
         </p>
+      </Section>
+
+      {/* Site Context */}
+      <Section id="site-context" className="border-b border-border">
+        <div className="mb-[var(--spacing-v-space-sm)]">
+          <p className="text-xs font-medium tracking-widest text-accent uppercase mb-2">
+            Site Analysis
+          </p>
+          <h2 className="text-3xl font-semibold tracking-tight">
+            Site Context
+          </h2>
+          <p className="mt-3 max-w-xl text-base leading-relaxed text-text-muted">
+            Toggle layers to explore environmental and contextual factors
+            influencing the site design.
+          </p>
+        </div>
+        <SiteContext />
       </Section>
 
       {/* Floor Plan */}
