@@ -1,6 +1,15 @@
 import type { ReactNode } from "react";
 import { LayeredMap } from "../components/LayeredMap/LayeredMap";
-import { gymBase, gymLayers } from "./gymLayers";
+import {
+  gymBase,
+  gymLayers,
+  cafeBase,
+  cafeLayers,
+  receptionBase,
+  receptionLayers,
+  lobbyBase,
+  lobbyLayers,
+} from "./enlargedFloorPlanLayers";
 
 export type MarkerContentBlock =
   | { type: "text"; value: string }
@@ -31,11 +40,23 @@ export const markers: MarkerData[] = [
     x: 38,
     y: 52,
     title: "Reception",
+    fullScreen: true,
     content: [
       {
         type: "text",
         value:
           "The main reception area where visitors are greeted. Check in with the front desk upon arrival.",
+      },
+      {
+        type: "component",
+        render: () => (
+          <LayeredMap
+            baseImage={receptionBase}
+            baseAlt="Reception floor plan"
+            layers={receptionLayers}
+            mode="radio"
+          />
+        ),
       },
     ],
   },
@@ -104,6 +125,58 @@ export const markers: MarkerData[] = [
         type: "text",
         value:
           "This machine allows you to print in black & white, color, and scan. Use your badge to authenticate.",
+      },
+    ],
+  },
+  {
+    id: "cafe",
+    floor: 1,
+    x: 50,
+    y: 40,
+    title: "Cafe",
+    fullScreen: true,
+    content: [
+      {
+        type: "text",
+        value:
+          "On-site cafe and pantry area offering beverages, light meals, and a casual seating space.",
+      },
+      {
+        type: "component",
+        render: () => (
+          <LayeredMap
+            baseImage={cafeBase}
+            baseAlt="Cafe floor plan"
+            layers={cafeLayers}
+            mode="radio"
+          />
+        ),
+      },
+    ],
+  },
+  {
+    id: "lobby",
+    floor: 1,
+    x: 30,
+    y: 40,
+    title: "Lobby",
+    fullScreen: true,
+    content: [
+      {
+        type: "text",
+        value:
+          "The main lobby and elevator area providing access to all floors of the building.",
+      },
+      {
+        type: "component",
+        render: () => (
+          <LayeredMap
+            baseImage={lobbyBase}
+            baseAlt="Lobby floor plan"
+            layers={lobbyLayers}
+            mode="radio"
+          />
+        ),
       },
     ],
   },
