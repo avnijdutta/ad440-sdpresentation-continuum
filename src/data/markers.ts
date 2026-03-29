@@ -1,5 +1,6 @@
 export interface MarkerData {
   id: string;
+  floor: number;
   x: number; // percentage (0-100)
   y: number; // percentage (0-100)
   title: string;
@@ -7,9 +8,17 @@ export interface MarkerData {
   image?: string;
 }
 
+export interface FloorData {
+  id: number;
+  label: string;
+  image: string;
+}
+
 export const markers: MarkerData[] = [
+  // Ground floor
   {
     id: "reception",
+    floor: 1,
     x: 38,
     y: 52,
     title: "Reception",
@@ -18,6 +27,7 @@ export const markers: MarkerData[] = [
   },
   {
     id: "kitchen",
+    floor: 1,
     x: 53,
     y: 61,
     title: "Kitchen",
@@ -26,6 +36,7 @@ export const markers: MarkerData[] = [
   },
   {
     id: "mail-room",
+    floor: 1,
     x: 17,
     y: 50,
     title: "Mail Room",
@@ -34,14 +45,17 @@ export const markers: MarkerData[] = [
   },
   {
     id: "printer-west",
+    floor: 1,
     x: 18,
     y: 59,
     title: "Printer (West)",
     description:
       "This machine allows you to print in black & white, color, and scan. Use your badge to authenticate.",
   },
+  // Second floor
   {
     id: "printer-east",
+    floor: 2,
     x: 83,
     y: 61,
     title: "Printer (East)",
@@ -50,6 +64,7 @@ export const markers: MarkerData[] = [
   },
   {
     id: "conference-a",
+    floor: 2,
     x: 70,
     y: 30,
     title: "Conference Room A",
@@ -58,6 +73,7 @@ export const markers: MarkerData[] = [
   },
   {
     id: "conference-b",
+    floor: 2,
     x: 30,
     y: 30,
     title: "Conference Room B",
