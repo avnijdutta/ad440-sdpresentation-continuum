@@ -30,6 +30,7 @@ export function FloorPlan() {
   const [activeFloor, setActiveFloor] = useState(1);
   const [activeMarker, setActiveMarker] = useState<MarkerData | null>(null);
   const transformRef = useRef<ReactZoomPanPinchRef>(null);
+  const initialFitDone = useRef(false);
 
   const floorMarkers = markers.filter((m) => m.floor === activeFloor);
   const currentFloor = floors[activeFloor - 1];
@@ -90,7 +91,10 @@ export function FloorPlan() {
                   src={currentFloor.image}
                   alt={currentFloor.label}
                   onLoad={() => {
-                    if (transformRef.current) fitToView(transformRef.current);
+                    if (transformRef.current && !initialFitDone.current) {
+                      initialFitDone.current = true;
+                      fitToView(transformRef.current);
+                    }
                   }}
                 />
 
