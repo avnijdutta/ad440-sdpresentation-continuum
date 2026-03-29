@@ -12,6 +12,12 @@ export function SiteContext() {
     setVisibleLayers((prev) => ({ ...prev, [id]: !prev[id] }));
   }
 
+  function clearAll() {
+    setVisibleLayers(Object.fromEntries(layers.map((l) => [l.id, false])));
+  }
+
+  const anyActive = Object.values(visibleLayers).some(Boolean);
+
   return (
     <div>
       {/* Map container */}
@@ -57,7 +63,7 @@ export function SiteContext() {
               onClick={() => toggle(layer.id)}
               className={`cursor-pointer rounded-full px-4 py-1.5 text-xs font-medium tracking-wide transition-all duration-200 ${
                 active
-                  ? "bg-accent text-bg shadow-sm"
+                  ? "border border-accent bg-accent text-bg shadow-sm"
                   : "border border-border text-text-muted hover:border-accent hover:text-accent"
               }`}
             >
@@ -65,7 +71,37 @@ export function SiteContext() {
             </button>
           );
         })}
+        {anyActive && (
+          <button
+            onClick={clearAll}
+            className="cursor-pointer rounded-full px-4 py-1.5 text-xs font-medium tracking-wide text-text-muted transition-all duration-200 hover:text-text"
+          >
+            Clear All
+          </button>
+        )}
       </div>
+
+      {/* Legends for active layers */}
+      {anyActive && (
+        <div className="mt-4 flex flex-wrap gap-x-6 gap-y-2">
+          {layers
+            .filter((layer) => visibleLayers[layer.id] && layer.legend.length > 0)
+            .flatMap((layer) =>
+              layer.legend.map((item) => (
+                <div
+                  key={`${layer.id}-${item.label}`}
+                  className="flex items-center gap-2"
+                >
+                  <span
+                    className="inline-block h-3 w-3 rounded-sm"
+                    style={{ backgroundColor: item.color }}
+                  />
+                  <span className="text-xs text-text-muted">{item.label}</span>
+                </div>
+              ))
+            )}
+        </div>
+      )}
     </div>
   );
 }
