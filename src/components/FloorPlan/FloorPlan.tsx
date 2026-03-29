@@ -7,12 +7,12 @@ import {
 import { Marker } from "./Marker";
 import { MarkerModal } from "./MarkerModal";
 import { markers, type MarkerData } from "../../data/markers";
-import floor1Img from "../../assets/floor_1.png";
-import floor2Img from "../../assets/floor_2.png";
+import groundFloorImg from "../../assets/ground_floor.png";
+import firstFloorImg from "../../assets/first_floor.png";
 
 const floors = [
-  { id: 1, label: "Floor 1", image: floor1Img },
-  { id: 2, label: "Floor 2", image: floor2Img },
+  { id: 1, label: "Ground Floor", image: groundFloorImg },
+  { id: 2, label: "First Floor", image: firstFloorImg },
 ];
 
 function fitToView(ref: ReactZoomPanPinchRef, animationMs = 0) {

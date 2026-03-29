@@ -24,7 +24,7 @@ export interface FloorData {
 }
 
 export const markers: MarkerData[] = [
-  // Ground floor
+  // Ground Floor
   {
     id: "reception",
     floor: 1,
@@ -107,7 +107,7 @@ export const markers: MarkerData[] = [
       },
     ],
   },
-  // Second floor
+  // First Floor
   {
     id: "printer-east",
     floor: 2,
