@@ -32,15 +32,25 @@ export function LayeredMap({ baseImage, baseAlt, layers, mode = "toggle" }: Laye
 
   const anyActive = Object.values(visibleLayers).some(Boolean);
 
+  const [loaded, setLoaded] = useState(false);
+
   return (
     <div>
       {/* Map container */}
       <div className="relative aspect-video w-full overflow-hidden rounded-sm border border-border bg-gradient-to-br from-gray-50 to-gray-100">
+        {/* Loading spinner */}
+        {!loaded && (
+          <div className="absolute inset-0 z-10 flex items-center justify-center">
+            <div className="h-6 w-6 animate-spin rounded-full border-2 border-border border-t-accent" />
+          </div>
+        )}
+
         {/* Base layer — always visible */}
         <img
           src={baseImage}
           alt={baseAlt}
-          className="absolute inset-0 h-full w-full object-cover"
+          className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-300 ${loaded ? "opacity-100" : "opacity-0"}`}
+          onLoad={() => setLoaded(true)}
         />
 
         {/* Toggleable layers */}

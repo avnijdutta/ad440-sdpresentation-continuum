@@ -6,16 +6,10 @@ import { LayeredMap } from "./components/LayeredMap/LayeredMap";
 import { layers as siteContextLayers } from "./data/layers";
 import siteMap from "./assets/site_map.png";
 import heroImage from "./assets/cafe_render.png";
-import gymBase from "./assets/gym/gym_base.png";
-import groundFloor from "./assets/ground_floor.png";
-import firstFloor from "./assets/first_floor.png";
 
 function App() {
   return (
     <div className="min-h-screen flex flex-col">
-      <link rel="preload" href={gymBase} as="image" />
-      <link rel="preload" href={groundFloor} as="image" />
-      <link rel="preload" href={firstFloor} as="image" />
       <Header />
 
       {/* Hero */}
