@@ -1,4 +1,5 @@
 import { Modal } from "../ui/Modal";
+import { FullScreenModal } from "../ui/FullScreenModal";
 import type { MarkerData, MarkerContentBlock } from "../../data/markers";
 
 interface MarkerModalProps {
@@ -27,22 +28,30 @@ function ContentBlock({ block }: { block: MarkerContentBlock }) {
   }
 }
 
+function MarkerContent({ marker }: { marker: MarkerData }) {
+  return (
+    <div className="space-y-4">
+      <p className="text-xs font-medium tracking-widest text-accent uppercase">
+        Location
+      </p>
+      <h2 className="text-2xl font-semibold tracking-tight text-text">
+        {marker.title}
+      </h2>
+      {marker.content.map((block, i) => (
+        <ContentBlock key={i} block={block} />
+      ))}
+    </div>
+  );
+}
+
 export function MarkerModal({ marker, onClose }: MarkerModalProps) {
   if (!marker) return null;
 
+  const Wrapper = marker.fullScreen ? FullScreenModal : Modal;
+
   return (
-    <Modal open={!!marker} onClose={onClose}>
-      <div className="space-y-4">
-        <p className="text-xs font-medium tracking-widest text-accent uppercase">
-          Location
-        </p>
-        <h2 className="text-2xl font-semibold tracking-tight text-text">
-          {marker.title}
-        </h2>
-        {marker.content.map((block, i) => (
-          <ContentBlock key={i} block={block} />
-        ))}
-      </div>
-    </Modal>
+    <Wrapper open={!!marker} onClose={onClose}>
+      <MarkerContent marker={marker} />
+    </Wrapper>
   );
 }

@@ -14,6 +14,7 @@ export interface MarkerData {
   y: number; // percentage (0-100)
   title: string;
   content: MarkerContentBlock[];
+  fullScreen?: boolean;
 }
 
 export interface FloorData {
@@ -72,6 +73,7 @@ export const markers: MarkerData[] = [
     x: 70,
     y: 50,
     title: "Gym",
+    fullScreen: true,
     content: [
       {
         type: "text",
