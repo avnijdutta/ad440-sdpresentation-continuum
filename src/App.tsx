@@ -5,13 +5,17 @@ import { FloorPlan } from "./components/FloorPlan/FloorPlan";
 import { LayeredMap } from "./components/LayeredMap/LayeredMap";
 import { layers as siteContextLayers } from "./data/layers";
 import siteMap from "./assets/site_map.png";
-import bigLeaf from "./assets/cafe_render.png";
+import heroImage from "./assets/cafe_render.png";
 import gymBase from "./assets/gym/gym_base.png";
+import groundFloor from "./assets/ground_floor.png";
+import firstFloor from "./assets/first_floor.png";
 
 function App() {
   return (
     <div className="min-h-screen flex flex-col">
       <link rel="preload" href={gymBase} as="image" />
+      <link rel="preload" href={groundFloor} as="image" />
+      <link rel="preload" href={firstFloor} as="image" />
       <Header />
 
       {/* Hero */}
@@ -20,7 +24,7 @@ function App() {
         className="relative border-b border-border min-h-[480px] flex items-center px-[var(--spacing-margin)] py-[var(--spacing-v-space)] overflow-hidden lg:aspect-[2912/1472]"
       >
         <img
-          src={bigLeaf}
+          src={heroImage}
           alt=""
           className="hidden lg:block absolute inset-0 w-full h-full object-cover pointer-events-none select-none"
         />
