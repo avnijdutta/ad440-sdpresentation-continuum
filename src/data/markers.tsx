@@ -1,4 +1,6 @@
 import type { ReactNode } from "react";
+import { LayeredMap } from "../components/LayeredMap/LayeredMap";
+import { gymBase, gymLayers } from "./gymLayers";
 
 export type MarkerContentBlock =
   | { type: "text"; value: string }
@@ -61,6 +63,30 @@ export const markers: MarkerData[] = [
         type: "text",
         value:
           "All incoming and outgoing mail is processed here. Package pickup is available during business hours.",
+      },
+    ],
+  },
+  {
+    id: "gym",
+    floor: 1,
+    x: 70,
+    y: 50,
+    title: "Gym",
+    content: [
+      {
+        type: "text",
+        value:
+          "Multi-purpose fitness area with cardio equipment, free weights, and flexible open space for classes.",
+      },
+      {
+        type: "component",
+        render: () => (
+          <LayeredMap
+            baseImage={gymBase}
+            baseAlt="Gym floor plan"
+            layers={gymLayers}
+          />
+        ),
       },
     ],
   },
