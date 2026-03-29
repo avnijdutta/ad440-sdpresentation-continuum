@@ -1,8 +1,13 @@
 import { useState } from "react";
-import { layers } from "../../data/layers";
-import siteMap from "../../assets/site_map.png";
+import type { LayerData } from "../../data/layers";
 
-export function SiteContext() {
+interface LayeredMapProps {
+  baseImage: string;
+  baseAlt: string;
+  layers: LayerData[];
+}
+
+export function LayeredMap({ baseImage, baseAlt, layers }: LayeredMapProps) {
   const [visibleLayers, setVisibleLayers] = useState<Record<string, boolean>>(
     () =>
       Object.fromEntries(layers.map((layer) => [layer.id, layer.defaultVisible]))
@@ -24,8 +29,8 @@ export function SiteContext() {
       <div className="relative aspect-video w-full overflow-hidden rounded-sm border border-border bg-gradient-to-br from-gray-50 to-gray-100">
         {/* Base layer — always visible */}
         <img
-          src={siteMap}
-          alt="Site map"
+          src={baseImage}
+          alt={baseAlt}
           className="absolute inset-0 h-full w-full object-cover"
         />
 
