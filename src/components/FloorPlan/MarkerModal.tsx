@@ -1,9 +1,30 @@
 import { Modal } from "../ui/Modal";
-import type { MarkerData } from "../../data/markers";
+import type { MarkerData, MarkerContentBlock } from "../../data/markers";
 
 interface MarkerModalProps {
   marker: MarkerData | null;
   onClose: () => void;
+}
+
+function ContentBlock({ block }: { block: MarkerContentBlock }) {
+  switch (block.type) {
+    case "text":
+      return (
+        <p className="text-base leading-relaxed text-text-muted">
+          {block.value}
+        </p>
+      );
+    case "image":
+      return (
+        <img
+          src={block.src}
+          alt={block.alt ?? ""}
+          className="w-full rounded-sm object-cover"
+        />
+      );
+    case "component":
+      return <>{block.render()}</>;
+  }
 }
 
 export function MarkerModal({ marker, onClose }: MarkerModalProps) {
@@ -18,16 +39,9 @@ export function MarkerModal({ marker, onClose }: MarkerModalProps) {
         <h2 className="text-2xl font-semibold tracking-tight text-text">
           {marker.title}
         </h2>
-        {marker.image && (
-          <img
-            src={marker.image}
-            alt={marker.title}
-            className="w-full rounded-sm object-cover"
-          />
-        )}
-        <p className="text-base leading-relaxed text-text-muted">
-          {marker.description}
-        </p>
+        {marker.content.map((block, i) => (
+          <ContentBlock key={i} block={block} />
+        ))}
       </div>
     </Modal>
   );
