@@ -22,7 +22,7 @@ export const layers: LayerData[] = [
     id: "location",
     label: "Site Location",
     src: siteLocation,
-    defaultVisible: false,
+    defaultVisible: true,
     legend: [
       { color: "#6366f1", label: "Site" },
     ],
@@ -31,7 +31,7 @@ export const layers: LayerData[] = [
     id: "views",
     label: "Surrounding Views",
     src: surroundingViews,
-    defaultVisible: false,
+    defaultVisible: true,
     legend: [
       { color: "#6b6b78", label: "Surrounding Buildings" },
       { color: "#1a7a2e", label: "Park" },
