@@ -76,7 +76,6 @@ export const markers: MarkerData[] = [
         ),
       },
       { type: "image", src: receptionRender, alt: "Reception render" },
-      { type: "image", src: receptionLobbyRCP, alt: "Reception and lobby RCP sketch" },
       {
         type: "component",
         render: () => (
@@ -90,6 +89,7 @@ export const markers: MarkerData[] = [
           />
         ),
       },
+      { type: "image", src: receptionLobbyRCP, alt: "Reception and lobby RCP sketch" },
     ],
   },
   {
@@ -129,7 +129,6 @@ export const markers: MarkerData[] = [
         ),
       },
       { type: "image", src: cafeRender, alt: "Cafe render" },
-      { type: "image", src: cafeRCP, alt: "Cafe RCP sketch" },
       {
         type: "component",
         render: () => (
@@ -144,6 +143,7 @@ export const markers: MarkerData[] = [
           />
         ),
       },
+      { type: "image", src: cafeRCP, alt: "Cafe RCP sketch" },
     ],
   },
   {
@@ -167,7 +167,6 @@ export const markers: MarkerData[] = [
         ),
       },
       { type: "image", src: lobbyRender, alt: "Lobby render" },
-      { type: "image", src: receptionLobbyRCP, alt: "Reception and lobby RCP sketch" },
       {
         type: "component",
         render: () => (
@@ -182,6 +181,7 @@ export const markers: MarkerData[] = [
           />
         ),
       },
+      { type: "image", src: receptionLobbyRCP, alt: "Reception and lobby RCP sketch" },
     ],
   },
   {
