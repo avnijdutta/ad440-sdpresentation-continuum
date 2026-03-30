@@ -3,9 +3,16 @@ import { Footer } from "./components/Layout/Footer";
 import { Section } from "./components/Layout/Section";
 import { FloorPlan } from "./components/FloorPlan/FloorPlan";
 import { LayeredMap } from "./components/LayeredMap/LayeredMap";
+import { Carousel } from "./components/ui/Carousel";
 import { layers as siteContextLayers } from "./data/layers";
 import siteMap from "./assets/site_map/base_map.png";
 import heroImage from "./assets/cafe_render.png";
+import conceptLeaf from "./assets/concept_development/1_leaf.png";
+import conceptParti from "./assets/concept_development/2_Partis1.jpeg";
+import conceptNegativeSpace from "./assets/concept_development/3_parti_and_model.png";
+import conceptBoard from "./assets/concept_development/4_concept_board.png";
+import conceptSketches1 from "./assets/concept_development/5_ideationsketches_1.jpg";
+import conceptSketches2 from "./assets/concept_development/6_ideationsketches_2.jpg";
 
 function App() {
   return (
@@ -99,29 +106,16 @@ function App() {
             individual and collective.
           </p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-[var(--spacing-gutter)]">
-          <div className="border border-border rounded-lg p-6">
-            <h3 className="text-lg font-semibold mb-2">Continuity</h3>
-            <p className="text-sm leading-relaxed text-text-muted">
-              Flowing spatial sequences that blur boundaries between inside and
-              outside, creating a unified experience throughout the building.
-            </p>
-          </div>
-          <div className="border border-border rounded-lg p-6">
-            <h3 className="text-lg font-semibold mb-2">Adaptability</h3>
-            <p className="text-sm leading-relaxed text-text-muted">
-              Flexible layouts and modular elements that allow spaces to be
-              reconfigured for different uses, events, and community needs.
-            </p>
-          </div>
-          <div className="border border-border rounded-lg p-6">
-            <h3 className="text-lg font-semibold mb-2">Context</h3>
-            <p className="text-sm leading-relaxed text-text-muted">
-              Responsive design informed by site orientation, climate, and
-              cultural considerations to create a building rooted in its place.
-            </p>
-          </div>
-        </div>
+        <Carousel
+          slides={[
+            { image: conceptLeaf, alt: "Original leaf image", caption: "Concept Origin", blurb: "A photograph of the leaf was digitally manipulated in Photoshop to emphasize its underlying structure, drawing attention to the veins, edges, and layered surfaces. Through this process, the leaf was abstracted beyond its literal form, revealing a framework of edge, line, and surface." },
+            { image: conceptParti, alt: "Parti diagram", caption: "Parti Diagramming", blurb: "The manipulated leaf image was studied to develop a series of parti diagrams that abstract its key qualities. By focusing on the vein structure, edges, and layered surfaces, the leaf informed simplified diagrams." },
+            { image: conceptNegativeSpace, alt: "Negative space parti diagram", caption: "3D Ideation", blurb: "The final sketch based on the parti diagram exploring the negative space between the veins of the leaf, was translated into a 3D model to explore the parti in spatial form. The model emphasized layering, organic movement, and adaptability, using voids and transitions to shape the overall design." },
+            { image: conceptBoard, alt: "Concept board", caption: "Final Concept: Continuum", blurb: "The elements abstracted from the leaf and 3D model were distilled into three key ideas: adaptive, connected, and layered. These qualities informed a concept board of curated imagery, ultimately defining the final concept: Continuum." },
+            { image: conceptSketches1, alt: "Ideation sketches", caption: "Abstract Ideation Sketching", blurb: "The concept was then used to explore how these ideas could translate into a 3D interior space. Through a series of sketches, the design evolved from abstract notions into more defined spatial strategies, illustrating the progression from concept to tangible interior experience." },
+            { image: conceptSketches2, alt: "Ideation sketches continued", caption: "Abstract Ideation Sketching", blurb: "The concept was then used to explore how these ideas could translate into a 3D interior space. Through a series of sketches, the design evolved from abstract notions into more defined spatial strategies, illustrating the progression from concept to tangible interior experience." },
+          ]}
+        />
       </Section>
 
       {/* Interior Ideation */}
