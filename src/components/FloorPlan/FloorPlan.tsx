@@ -54,7 +54,7 @@ export function FloorPlan() {
         ))}
       </div>
 
-      <div className="relative aspect-video overflow-hidden rounded-sm rounded-tl-none border border-border bg-gradient-to-br from-gray-50 to-gray-100">
+      <div className="relative aspect-video overflow-hidden rounded-sm rounded-tl-none border border-border bg-white">
         {/* Zoom controls — top right */}
         <div className="absolute top-4 right-4 z-20 flex flex-col gap-1">
           {([

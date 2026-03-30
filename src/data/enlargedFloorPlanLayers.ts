@@ -25,7 +25,10 @@ export const gymLayers: LayerData[] = [
     label: "Views",
     src: gymViews,
     defaultVisible: false,
-    legend: [],
+    legend: [
+      { label: "Interior visibility", color: "#00E5FF" },
+      { label: "Exterior visibility", color: "#00FF00" },
+    ],
   },
   {
     id: "gym-acoustics",
@@ -39,7 +42,10 @@ export const gymLayers: LayerData[] = [
     label: "Flooring Types",
     src: gymFlooringTypes,
     defaultVisible: false,
-    legend: [],
+    legend: [
+      { label: "Hard flooring", color: "#F5A0B0" },
+      { label: "Soft flooring", color: "#A8B8E0" },
+    ],
   },
 ];
 

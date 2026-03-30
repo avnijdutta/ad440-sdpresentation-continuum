@@ -1,4 +1,11 @@
 import type { ReactNode } from "react";
+import gymMirrorWallcovering from "../assets/enlarged_floor_plan/gym/materials/gym_mirror_wallcovering.jpg";
+import gymPolishedConcrete from "../assets/enlarged_floor_plan/gym/materials/gym_polishedconcrete_flooring.jpg";
+import gymRecycledRubber from "../assets/enlarged_floor_plan/gym/materials/gym_recycledrubber_flooring.jpg";
+import gymWoodgrainLVT from "../assets/enlarged_floor_plan/gym/materials/gym_woodgrainLVT_flooring.jpg";
+import { LayeredMap } from "../components/LayeredMap/LayeredMap";
+import { MaterialDescription } from "../components/ui/MaterialDescription";
+import { gymBase, gymLayers } from "./enlargedFloorPlanLayers";
 
 export type MarkerContentBlock =
   | { type: "text"; value: string }
@@ -165,7 +172,34 @@ export const markers: MarkerData[] = [
     x: 59,
     y: 65,
     title: "Gym",
-    content: [{ type: "text", value: "Gym" }],
+    fullScreen: true,
+    content: [
+      { type: "text", value: "Sensory Overlay Map" },
+      {
+        type: "component",
+        render: () => (
+          <LayeredMap
+            baseImage={gymBase}
+            baseAlt="Gym floor plan"
+            layers={gymLayers}
+            mode="radio"
+          />
+        ),
+      },
+      {
+        type: "component",
+        render: () => (
+          <MaterialDescription
+            materials={[
+              { image: gymPolishedConcrete, alt: "Polished concrete flooring", title: "Flooring: Polished Cement", description: "Extremely durable for commercial use. Stays cool underfoot. Minimal material layering for sustainability. Reflects light softly, enhancing daylight." },
+              { image: gymRecycledRubber, alt: "Recycled rubber flooring", title: "Flooring: Recycled Rubber Gym Flooring", description: "Shock absorption. Acoustic dampening. Slip-resistant. Durable under heavy equipment. Sustainable. Heat resistant." },
+              { image: gymWoodgrainLVT, alt: "Engineered wood flooring", title: "Flooring: Engineered Wood Flooring Wide Plank Ash", description: "Comfortable for floor-based exercises. Easy to maintain. Elegant design appeal." },
+              { image: gymMirrorWallcovering, alt: "Mirror wallcovering", title: "Mirror", description: "Allows for visibility on the workout equipment and in group fitness rooms." },
+            ]}
+          />
+        ),
+      },
+    ],
   },
   {
     id: "gym-staff-offices",
