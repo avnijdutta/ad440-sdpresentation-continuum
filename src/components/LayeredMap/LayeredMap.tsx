@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef, useCallback, useEffect } from "react";
 import type { ReactNode } from "react";
 import type { LayerData } from "../../data/layers";
 import { Marker } from "../FloorPlan/Marker";
@@ -26,6 +26,25 @@ export function LayeredMap({ baseImage, baseAlt, layers, mode = "toggle", marker
     () =>
       Object.fromEntries(layers.map((layer) => [layer.id, layer.defaultVisible]))
   );
+  const [isFullscreen, setIsFullscreen] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  const toggleFullscreen = useCallback(() => {
+    if (!containerRef.current) return;
+    if (!document.fullscreenElement) {
+      containerRef.current.requestFullscreen();
+    } else {
+      document.exitFullscreen();
+    }
+  }, []);
+
+  useEffect(() => {
+    function onFullscreenChange() {
+      setIsFullscreen(!!document.fullscreenElement);
+    }
+    document.addEventListener("fullscreenchange", onFullscreenChange);
+    return () => document.removeEventListener("fullscreenchange", onFullscreenChange);
+  }, []);
 
   function handleSelect(id: string) {
     if (mode === "radio") {
@@ -48,9 +67,9 @@ export function LayeredMap({ baseImage, baseAlt, layers, mode = "toggle", marker
   const [loaded, setLoaded] = useState(false);
 
   return (
-    <div>
+    <div ref={containerRef} className={isFullscreen ? "flex h-screen w-screen flex-col bg-white p-4 overflow-auto" : ""}>
       {/* Map container */}
-      <div className="relative aspect-video w-full overflow-hidden rounded-sm border border-border bg-gradient-to-br from-gray-50 to-gray-100">
+      <div className={`relative w-full overflow-hidden rounded-sm border border-border bg-gradient-to-br from-gray-50 to-gray-100 ${isFullscreen ? "flex-1 min-h-0" : "aspect-video"}`}>
         {/* Loading spinner */}
         {!loaded && (
           <div className="absolute inset-0 z-10 flex items-center justify-center">
@@ -100,6 +119,29 @@ export function LayeredMap({ baseImage, baseAlt, layers, mode = "toggle", marker
             onClick={() => setActiveMarkerId(activeMarkerId === marker.id ? null : marker.id)}
           />
         ))}
+
+        {/* Fullscreen toggle */}
+        <button
+          onClick={toggleFullscreen}
+          className="absolute top-2 right-2 z-20 flex h-8 w-8 cursor-pointer items-center justify-center rounded-sm border border-border bg-white/90 shadow-sm transition-colors hover:bg-border"
+          aria-label={isFullscreen ? "Exit fullscreen" : "Enter fullscreen"}
+        >
+          {isFullscreen ? (
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+              <polyline points="4 14 10 14 10 20" />
+              <polyline points="20 10 14 10 14 4" />
+              <line x1="14" y1="10" x2="21" y2="3" />
+              <line x1="3" y1="21" x2="10" y2="14" />
+            </svg>
+          ) : (
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+              <polyline points="15 3 21 3 21 9" />
+              <polyline points="9 21 3 21 3 15" />
+              <line x1="21" y1="3" x2="14" y2="10" />
+              <line x1="3" y1="21" x2="10" y2="14" />
+            </svg>
+          )}
+        </button>
       </div>
 
       {/* Active marker content */}

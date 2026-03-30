@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useRef, useState, useCallback, useEffect } from "react";
 import {
   TransformWrapper,
   TransformComponent,
@@ -29,14 +29,38 @@ function fitToView(ref: ReactZoomPanPinchRef, animationMs = 0) {
 export function FloorPlan() {
   const [activeFloor, setActiveFloor] = useState(1);
   const [activeMarker, setActiveMarker] = useState<MarkerData | null>(null);
+  const [isFullscreen, setIsFullscreen] = useState(false);
   const transformRef = useRef<ReactZoomPanPinchRef>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
   const initialFitDone = useRef(false);
+
+  const toggleFullscreen = useCallback(() => {
+    if (!containerRef.current) return;
+    if (!document.fullscreenElement) {
+      containerRef.current.requestFullscreen();
+    } else {
+      document.exitFullscreen();
+    }
+  }, []);
+
+  useEffect(() => {
+    function onFullscreenChange() {
+      const fs = !!document.fullscreenElement;
+      setIsFullscreen(fs);
+      // Re-fit the map after the browser finishes resizing
+      setTimeout(() => {
+        if (transformRef.current) fitToView(transformRef.current, 200);
+      }, 100);
+    }
+    document.addEventListener("fullscreenchange", onFullscreenChange);
+    return () => document.removeEventListener("fullscreenchange", onFullscreenChange);
+  }, []);
 
   const floorMarkers = markers.filter((m) => m.floor === activeFloor);
   const currentFloor = floors[activeFloor - 1];
 
   return (
-    <>
+    <div ref={containerRef} className={isFullscreen ? "flex h-screen w-screen flex-col bg-white p-4" : ""}>
       {/* Floor tabs — above the plan box */}
       <div className="flex">
         {floors.map((floor) => (
@@ -54,9 +78,30 @@ export function FloorPlan() {
         ))}
       </div>
 
-      <div className="relative aspect-video overflow-hidden rounded-sm rounded-tl-none border border-border bg-white">
+      <div className={`relative overflow-hidden rounded-sm rounded-tl-none border border-border bg-white ${isFullscreen ? "flex-1 min-h-0" : "aspect-video"}`}>
         {/* Zoom controls — top right */}
         <div className="absolute top-4 right-4 z-20 flex flex-col gap-1">
+          <button
+            onClick={toggleFullscreen}
+            className="flex h-8 w-8 cursor-pointer items-center justify-center rounded-sm border border-border bg-bg text-xs text-text shadow-sm transition-colors hover:bg-border"
+            aria-label={isFullscreen ? "Exit fullscreen" : "Enter fullscreen"}
+          >
+            {isFullscreen ? (
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                <polyline points="4 14 10 14 10 20" />
+                <polyline points="20 10 14 10 14 4" />
+                <line x1="14" y1="10" x2="21" y2="3" />
+                <line x1="3" y1="21" x2="10" y2="14" />
+              </svg>
+            ) : (
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                <polyline points="15 3 21 3 21 9" />
+                <polyline points="9 21 3 21 3 15" />
+                <line x1="21" y1="3" x2="14" y2="10" />
+                <line x1="3" y1="21" x2="10" y2="14" />
+              </svg>
+            )}
+          </button>
           {([
             { label: "+", ariaLabel: "Zoom in", action: () => transformRef.current?.zoomIn() },
             { label: "\u2212", ariaLabel: "Zoom out", action: () => transformRef.current?.zoomOut() },
@@ -117,6 +162,6 @@ export function FloorPlan() {
         marker={activeMarker}
         onClose={() => setActiveMarker(null)}
       />
-    </>
+    </div>
   );
 }
