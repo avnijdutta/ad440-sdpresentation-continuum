@@ -1,15 +1,4 @@
 import type { ReactNode } from "react";
-import { LayeredMap } from "../components/LayeredMap/LayeredMap";
-import {
-  gymBase,
-  gymLayers,
-  cafeBase,
-  cafeLayers,
-  receptionBase,
-  receptionLayers,
-  lobbyBase,
-  lobbyLayers,
-} from "./enlargedFloorPlanLayers";
 
 export type MarkerContentBlock =
   | { type: "text"; value: string }
@@ -37,148 +26,154 @@ export const markers: MarkerData[] = [
   {
     id: "reception",
     floor: 1,
-    x: 38,
-    y: 52,
+    x: 23,
+    y: 26,
     title: "Reception",
-    fullScreen: true,
-    content: [
-      {
-        type: "text",
-        value:
-          "The main reception area where visitors are greeted. Check in with the front desk upon arrival.",
-      },
-      {
-        type: "component",
-        render: () => (
-          <LayeredMap
-            baseImage={receptionBase}
-            baseAlt="Reception floor plan"
-            layers={receptionLayers}
-            mode="radio"
-          />
-        ),
-      },
-    ],
+    content: [{ type: "text", value: "Reception" }],
   },
   {
-    id: "kitchen",
+    id: "gallery",
     floor: 1,
-    x: 53,
-    y: 61,
-    title: "Kitchen",
-    content: [
-      {
-        type: "text",
-        value:
-          "Fully stocked kitchen with coffee, snacks, and a communal dining area. Please clean up after yourself.",
-      },
-    ],
+    x: 42,
+    y: 22,
+    title: "Gallery",
+    content: [{ type: "text", value: "Open gallery space able to adapt to any use." }],
   },
   {
-    id: "mail-room",
+    id: "pantry",
     floor: 1,
-    x: 17,
-    y: 50,
-    title: "Mail Room",
-    content: [
-      {
-        type: "text",
-        value:
-          "All incoming and outgoing mail is processed here. Package pickup is available during business hours.",
-      },
-    ],
-  },
-  {
-    id: "gym",
-    floor: 1,
-    x: 70,
-    y: 50,
-    title: "Gym",
-    fullScreen: true,
-    content: [
-      {
-        type: "text",
-        value:
-          "Multi-purpose fitness area with cardio equipment, free weights, and flexible open space for classes.",
-      },
-      {
-        type: "component",
-        render: () => (
-          <LayeredMap
-            baseImage={gymBase}
-            baseAlt="Gym floor plan"
-            layers={gymLayers}
-            mode="radio"
-          />
-        ),
-      },
-    ],
-  },
-  {
-    id: "printer-west",
-    floor: 1,
-    x: 18,
-    y: 59,
-    title: "Printer (West)",
-    content: [
-      {
-        type: "text",
-        value:
-          "This machine allows you to print in black & white, color, and scan. Use your badge to authenticate.",
-      },
-    ],
+    x: 51,
+    y: 23,
+    title: "Pantry",
+    content: [{ type: "text", value: "Storage for gallery and cafe spaces." }],
   },
   {
     id: "cafe",
     floor: 1,
-    x: 50,
-    y: 40,
+    x: 58,
+    y: 25,
     title: "Cafe",
-    fullScreen: true,
-    content: [
-      {
-        type: "text",
-        value:
-          "On-site cafe and pantry area offering beverages, light meals, and a casual seating space.",
-      },
-      {
-        type: "component",
-        render: () => (
-          <LayeredMap
-            baseImage={cafeBase}
-            baseAlt="Cafe floor plan"
-            layers={cafeLayers}
-            mode="radio"
-          />
-        ),
-      },
-    ],
+    content: [{ type: "text", value: "Cafe" }],
   },
   {
     id: "lobby",
     floor: 1,
-    x: 30,
-    y: 40,
+    x: 29,
+    y: 35,
     title: "Lobby",
-    fullScreen: true,
-    content: [
-      {
-        type: "text",
-        value:
-          "The main lobby and elevator area providing access to all floors of the building.",
-      },
-      {
-        type: "component",
-        render: () => (
-          <LayeredMap
-            baseImage={lobbyBase}
-            baseAlt="Lobby floor plan"
-            layers={lobbyLayers}
-            mode="radio"
-          />
-        ),
-      },
-    ],
+    content: [{ type: "text", value: "Lobby" }],
+  },
+  {
+    id: "restrooms",
+    floor: 1,
+    x: 41,
+    y: 32,
+    title: "Restrooms",
+    content: [{ type: "text", value: "Private but accessible restrooms." }],
+  },
+  {
+    id: "elevator-lobby",
+    floor: 1,
+    x: 19,
+    y: 48,
+    title: "Elevator\nLobby",
+    content: [{ type: "text", value: "Secure and private vertical circulation for residents." }],
+  },
+  {
+    id: "nic",
+    floor: 1,
+    x: 41,
+    y: 43,
+    title: "N.I.C.",
+    content: [{ type: "text", value: "Not in contract space suitable for any use." }],
+  },
+  {
+    id: "indoor-outdoor-connection",
+    floor: 1,
+    x: 56,
+    y: 42,
+    title: "Indoor/Outdoor\nConnection",
+    content: [{ type: "text", value: "Indoor/Outdoor Connection" }],
+  },
+  {
+    id: "lockers-1",
+    floor: 1,
+    x: 37,
+    y: 52,
+    title: "Lockers",
+    content: [{ type: "text", value: "Private locker rooms away from the open areas of the gym." }],
+  },
+  {
+    id: "lockers-2",
+    floor: 1,
+    x: 37,
+    y: 60,
+    title: "Lockers",
+    content: [{ type: "text", value: "Private locker rooms away from the open areas of the gym." }],
+  },
+  {
+    id: "mail",
+    floor: 1,
+    x: 18,
+    y: 61,
+    title: "Mail",
+    content: [{ type: "text", value: "Mail room for residents and delivery personnel." }],
+  },
+  {
+    id: "staff",
+    floor: 1,
+    x: 26,
+    y: 61,
+    title: "Staff",
+    content: [{ type: "text", value: "Break room and office for complex staff." }],
+  },
+  {
+    id: "equipment-storage",
+    floor: 1,
+    x: 37,
+    y: 66,
+    title: "Storage",
+    content: [{ type: "text", value: "Storage room for gym equipment." }],
+  },
+  {
+    id: "group-fitness-1",
+    floor: 1,
+    x: 47,
+    y: 56,
+    title: "Group Fitness",
+    content: [{ type: "text", value: "Smaller but inclusive spaces for group fitness sessions." }],
+  },
+  {
+    id: "group-fitness-2",
+    floor: 1,
+    x: 47,
+    y: 64,
+    title: "Group Fitness",
+    content: [{ type: "text", value: "Smaller but inclusive spaces for group fitness sessions." }],
+  },
+  {
+    id: "gym-reception",
+    floor: 1,
+    x: 61,
+    y: 52,
+    title: "Reception",
+    content: [{ type: "text", value: "Secure reception for gym members." }],
+  },
+  {
+    id: "gym",
+    floor: 1,
+    x: 59,
+    y: 65,
+    title: "Gym",
+    content: [{ type: "text", value: "Gym" }],
+  },
+  {
+    id: "gym-staff-offices",
+    floor: 1,
+    x: 42,
+    y: 76,
+    title: "Staff Offices",
+    content: [{ type: "text", value: "Gym staff offices and first aid room." }],
   },
   // First Floor
   {
