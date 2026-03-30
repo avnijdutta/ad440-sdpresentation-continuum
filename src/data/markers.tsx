@@ -1,30 +1,30 @@
 import type { ReactNode } from "react";
-import gymElevationWaterstation from "../assets/enlarged_floor_plan/gym/gym_elevation_waterstation.png";
-import gymMirrorWallcovering from "../assets/enlarged_floor_plan/gym/materials/gym_mirror_wallcovering.jpg";
-import gymPolishedConcrete from "../assets/enlarged_floor_plan/gym/materials/gym_polishedconcrete_flooring.jpg";
-import gymRecycledRubber from "../assets/enlarged_floor_plan/gym/materials/gym_recycledrubber_flooring.jpg";
-import gymWoodgrainLVT from "../assets/enlarged_floor_plan/gym/materials/gym_woodgrainLVT_flooring.jpg";
+import cafeRCP from "../assets/enlarged_floor_plan/cafe/cafe_RCPsketch.png";
+import cafeRender from "../assets/enlarged_floor_plan/cafe/cafe_render.png";
 import cafeLimePlaster from "../assets/enlarged_floor_plan/cafe/materials/cafe_limeplaster_ceiling.jpg";
 import cafeLinen from "../assets/enlarged_floor_plan/cafe/materials/cafe_linen_ceiling.jpg";
 import cafeLimestone from "../assets/enlarged_floor_plan/cafe/materials/cafe_omanwhitelimestone_counterswalls.jpeg";
 import cafePolishedConcrete from "../assets/enlarged_floor_plan/cafe/materials/cafe_polishedconcrete_flooring.jpg";
 import cafeTeakwood from "../assets/enlarged_floor_plan/cafe/materials/cafe_teakwood_millwork.jpg";
-import cafeRCP from "../assets/enlarged_floor_plan/cafe/cafe_RCPsketch.png";
-import cafeRender from "../assets/enlarged_floor_plan/cafe/cafe_render.png";
-import mezzanineRender from "../assets/mezzanine/indooroutdoor_mezzanine_render.png";
-import mezzanineLimestone from "../assets/mezzanine/materials/mezzanine_omanilimestone_flooring.jpeg";
-import mezzanineSandstone from "../assets/mezzanine/materials/mezzanine_sandstonebricks_planterswalls.jpg";
-import mezzanineTeakwood from "../assets/mezzanine/materials/mezzanine_teakwood_seating.jpg";
+import gymElevationWaterstation from "../assets/enlarged_floor_plan/gym/gym_elevation_waterstation.png";
+import gymMirrorWallcovering from "../assets/enlarged_floor_plan/gym/materials/gym_mirror_wallcovering.jpg";
+import gymPolishedConcrete from "../assets/enlarged_floor_plan/gym/materials/gym_polishedconcrete_flooring.jpg";
+import gymRecycledRubber from "../assets/enlarged_floor_plan/gym/materials/gym_recycledrubber_flooring.jpg";
+import gymWoodgrainLVT from "../assets/enlarged_floor_plan/gym/materials/gym_woodgrainLVT_flooring.jpg";
 import lobbyRender from "../assets/enlarged_floor_plan/reception_lobby/lobby_render.png";
-import receptionLobbyRCP from "../assets/enlarged_floor_plan/reception_lobby/reception_lobby_RCPsketch.png";
-import receptionRender from "../assets/enlarged_floor_plan/reception_lobby/reception_render.png";
 import receptionAshwood from "../assets/enlarged_floor_plan/reception_lobby/materials/reception_ashwoodengineered_flooring.jpg";
 import receptionLinen from "../assets/enlarged_floor_plan/reception_lobby/materials/reception_linen_ceiling.jpg";
 import receptionOmaniMarble from "../assets/enlarged_floor_plan/reception_lobby/materials/reception_omanimarble_wallcovering.jpg";
 import receptionTeakwood from "../assets/enlarged_floor_plan/reception_lobby/materials/reception_teakwood_millwork.jpg";
+import receptionLobbyRCP from "../assets/enlarged_floor_plan/reception_lobby/reception_lobby_RCPsketch.png";
+import receptionRender from "../assets/enlarged_floor_plan/reception_lobby/reception_render.png";
+import mezzanineRender from "../assets/mezzanine/indooroutdoor_mezzanine_render.png";
+import mezzanineLimestone from "../assets/mezzanine/materials/mezzanine_omanilimestone_flooring.jpeg";
+import mezzanineSandstone from "../assets/mezzanine/materials/mezzanine_sandstonebricks_planterswalls.jpg";
+import mezzanineTeakwood from "../assets/mezzanine/materials/mezzanine_teakwood_seating.jpg";
 import { LayeredMap } from "../components/LayeredMap/LayeredMap";
 import { MaterialDescription } from "../components/ui/MaterialDescription";
-import { gymBase, gymLayers, receptionLobbyBase, receptionLayers, lobbyLayers, cafeBase, cafeLayers, mezzanineBase, mezzanineLayers } from "./enlargedFloorPlanLayers";
+import { cafeBase, cafeLayers, gymBase, gymLayers, lobbyLayers, mezzanineBase, mezzanineLayers, receptionLayers, receptionLobbyBase } from "./enlargedFloorPlanLayers";
 
 export type MarkerContentBlock =
   | { type: "text"; value: string }
@@ -355,45 +355,99 @@ export const markers: MarkerData[] = [
   },
   // First Floor
   {
-    id: "printer-east",
+    id: "courtyard",
     floor: 2,
-    x: 83,
-    y: 61,
-    title: "Printer (East)",
-    content: [
-      {
-        type: "text",
-        value:
-          "Secondary printing station. Supports large format printing and scanning.",
-      },
-    ],
+    x: 35,
+    y: 27,
+    title: "Courtyard",
+    content: [{ type: "text", value: "Courtyard" }],
   },
   {
-    id: "conference-a",
+    id: "elevators-1",
     floor: 2,
-    x: 70,
-    y: 30,
-    title: "Conference Room A",
-    content: [
-      {
-        type: "text",
-        value:
-          "Large conference room seating up to 12 people. Equipped with video conferencing and whiteboard.",
-      },
-    ],
+    x: 19,
+    y: 49,
+    title: "Elevators",
+    content: [{ type: "text", value: "Elevators" }],
   },
   {
-    id: "conference-b",
+    id: "elevators-2",
     floor: 2,
-    x: 30,
-    y: 30,
-    title: "Conference Room B",
-    content: [
-      {
-        type: "text",
-        value:
-          "Medium meeting room for 6 people. Book via the scheduling system on the door display.",
-      },
-    ],
+    x: 52,
+    y: 37,
+    title: "Elevator",
+    content: [{ type: "text", value: "Elevators" }],
+  },
+  {
+    id: "elevators-3",
+    floor: 2,
+    x: 28.7,
+    y: 72.5,
+    title: "Elevator",
+    content: [{ type: "text", value: "Elevators" }],
+  },
+  {
+    id: "wildcard-office",
+    floor: 2,
+    x: 57,
+    y: 28,
+    title: "Wildcard Office Space",
+    content: [{ type: "text", value: "A versatile office space fit with phone booths, desks, and casual seating for residents and visitors to conduct business in an elevated and more formal working space." }],
+  },
+  {
+    id: "covered-terrace",
+    floor: 2,
+    x: 26,
+    y: 24,
+    title: "Covered\nTerrace",
+    content: [{ type: "text", value: "Shaded seating area outdoors." }],
+  },
+  {
+    id: "open-seating",
+    floor: 2,
+    x: 46.5,
+    y: 43.5,
+    title: "Open\nSeating",
+    content: [{ type: "text", value: "Casual group seating area with views into the mezzanine and the courtyard." }],
+  },
+  {
+    id: "nic-f1-1",
+    floor: 2,
+    x: 44.5,
+    y: 57,
+    title: "N.I.C.",
+    content: [{ type: "text", value: "Not in contract spaces suitable for retail or group use." }],
+  },
+  {
+    id: "nic-f1-2",
+    floor: 2,
+    x: 53.7,
+    y: 57,
+    title: "N.I.C.",
+    content: [{ type: "text", value: "Not in contract spaces suitable for retail or group use." }],
+  },
+  {
+    id: "nic-f1-3",
+    floor: 2,
+    x: 61.5,
+    y: 57,
+    title: "N.I.C.",
+    content: [{ type: "text", value: "Not in contract spaces suitable for retail or group use." }],
+  },
+  {
+    id: "nic-f1-4",
+    floor: 2,
+    x: 51,
+    y: 73,
+    title: "N.I.C.",
+    content: [{ type: "text", value: "Not in contract spaces suitable for retail or group use." }],
+  },
+  {
+    id: "mezzanine-f1",
+    floor: 2,
+    x: 55.5,
+    y: 43,
+    title: "Indoor/Outdoor\nMezzanine",
+    content: [{ type: "text", value: "2-story mezzanine open to below" }],
   },
 ];
