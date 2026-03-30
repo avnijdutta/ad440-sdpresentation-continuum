@@ -2,8 +2,6 @@ const navLinks = [
   { href: "#project-brief", label: "Project Brief" },
   { href: "#site-context", label: "Site Context" },
   { href: "#concept-development", label: "Concept" },
-  { href: "#interior-ideation", label: "Interior" },
-  { href: "#space-diagrams", label: "Diagrams" },
   { href: "#floor-plan", label: "Floor Plan" },
 ];
 
