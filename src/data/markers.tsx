@@ -3,6 +3,7 @@ import courtyardRender from "../assets/courtyard/courtyard_render.png";
 import courtyardLimestone from "../assets/courtyard/materials/courtyard_omanilimestone_flooring.jpeg";
 import courtyardSandstone from "../assets/courtyard/materials/courtyard_sandstonebricks_planterswalls.jpg";
 import courtyardTeakwood from "../assets/courtyard/materials/courtyard_teakwood_seating.jpg";
+import courtyardWater from "../assets/courtyard/materials/lobby_water_ceiling.jpg";
 import cafeRCP from "../assets/enlarged_floor_plan/cafe/cafe_RCPsketch.png";
 import cafeRender from "../assets/enlarged_floor_plan/cafe/cafe_render.png";
 import cafeLimePlaster from "../assets/enlarged_floor_plan/cafe/materials/cafe_limeplaster_ceiling.jpg";
@@ -20,6 +21,7 @@ import receptionAshwood from "../assets/enlarged_floor_plan/reception_lobby/mate
 import receptionLinen from "../assets/enlarged_floor_plan/reception_lobby/materials/reception_linen_ceiling.jpg";
 import receptionOmaniMarble from "../assets/enlarged_floor_plan/reception_lobby/materials/reception_omanimarble_wallcovering.jpg";
 import receptionTeakwood from "../assets/enlarged_floor_plan/reception_lobby/materials/reception_teakwood_millwork.jpg";
+import lobbyWater from "../assets/enlarged_floor_plan/reception_lobby/materials/lobby_water_ceiling.jpg";
 import receptionLobbyRCP from "../assets/enlarged_floor_plan/reception_lobby/reception_lobby_RCPsketch.png";
 import receptionRender from "../assets/enlarged_floor_plan/reception_lobby/reception_render.png";
 import mezzanineRender from "../assets/mezzanine/indooroutdoor_mezzanine_render.png";
@@ -175,6 +177,7 @@ export const markers: MarkerData[] = [
               { image: receptionTeakwood, alt: "Teakwood millwork", title: "Wood Base Cladding: Teakwood", description: "Moisture-resistant. Regionally sourced." },
               { image: receptionLinen, alt: "Linen ceiling", title: "Draped Ceiling Fabric: Linen", description: "Locally sourced. Natural material." },
               { image: receptionAshwood, alt: "Ash wood engineered flooring", title: "Flooring: Engineered Wood Wide Plank Ash", description: "Comfortable for floor-based exercises. Easy to maintain. Elegant design appeal." },
+              { image: lobbyWater, alt: "Water element", title: "Water Elements", description: "Cooling effect. Makes light sparkle. Sound of running water is therapeutic." },
             ]}
           />
         ),
@@ -375,6 +378,7 @@ export const markers: MarkerData[] = [
               { image: courtyardLimestone, alt: "Omani limestone flooring", title: "Omani Limestone", description: "Locally abundant. Excellent thermal properties. Subtle texture." },
               { image: courtyardSandstone, alt: "Sandstone bricks planters and walls", title: "Sandstone Bricks", description: "Regional material. Ages naturally for an adaptive look. Durable in fluctuating heat." },
               { image: courtyardTeakwood, alt: "Teakwood seating", title: "Wood Base Cladding: Teakwood", description: "Moisture-resistant. Regionally sourced." },
+              { image: courtyardWater, alt: "Water element", title: "Water Elements", description: "Cooling effect. Makes light sparkle. Sound of running water is therapeutic." },
             ]}
           />
         ),
