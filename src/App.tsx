@@ -32,16 +32,13 @@ function App() {
         <div className="hidden lg:block absolute inset-0 bg-gradient-to-r from-black/70 via-black/30 to-transparent z-[1]" />
         <div className="relative z-10 lg:[text-shadow:0_2px_8px_rgba(0,0,0,0.3)]">
           <p className="text-xs font-medium tracking-widest text-accent uppercase mb-4 lg:text-[#d4a68a]">
-            Facilities Orientation
+            COASTAL NEXUS
           </p>
           <h1 className="text-5xl lg:text-7xl font-semibold tracking-tight leading-[1.05] max-w-3xl lg:text-white">
-            More than a building.
-            <br />
-            It's a place.
+            CONTINUUM
           </h1>
           <p className="mt-6 max-w-xl text-lg leading-relaxed text-text-muted lg:text-white/90">
-            Explore our facilities through the interactive floor plan below. Click
-            any marker to learn more about each area.
+            Social retail and residential complex in Muscat, Oman
           </p>
         </div>
       </section>
