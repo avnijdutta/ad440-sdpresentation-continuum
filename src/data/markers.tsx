@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import gymElevationWaterstation from "../assets/enlarged_floor_plan/gym/gym_elevation_waterstation.png";
 import gymMirrorWallcovering from "../assets/enlarged_floor_plan/gym/materials/gym_mirror_wallcovering.jpg";
 import gymPolishedConcrete from "../assets/enlarged_floor_plan/gym/materials/gym_polishedconcrete_flooring.jpg";
 import gymRecycledRubber from "../assets/enlarged_floor_plan/gym/materials/gym_recycledrubber_flooring.jpg";
@@ -183,6 +184,16 @@ export const markers: MarkerData[] = [
             baseAlt="Gym floor plan"
             layers={gymLayers}
             mode="radio"
+            markers={[
+              {
+                id: "gym-elevation-1",
+                x: 59,
+                y: 20,
+                label: "Elevation A",
+                type: "elevation",
+                content: () => <img src={gymElevationWaterstation} alt="Gym elevation — water station" className="w-full h-auto" />,
+              },
+            ]}
           />
         ),
       },

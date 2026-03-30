@@ -1,14 +1,27 @@
 import { useState } from "react";
+import type { ReactNode } from "react";
 import type { LayerData } from "../../data/layers";
+import { Marker } from "../FloorPlan/Marker";
+
+export interface LayeredMapMarker {
+  id: string;
+  x: number;
+  y: number;
+  label: string;
+  type?: "location" | "elevation";
+  content: () => ReactNode;
+}
 
 interface LayeredMapProps {
   baseImage: string;
   baseAlt: string;
   layers: LayerData[];
   mode?: "toggle" | "radio";
+  markers?: LayeredMapMarker[];
 }
 
-export function LayeredMap({ baseImage, baseAlt, layers, mode = "toggle" }: LayeredMapProps) {
+export function LayeredMap({ baseImage, baseAlt, layers, mode = "toggle", markers = [] }: LayeredMapProps) {
+  const [activeMarkerId, setActiveMarkerId] = useState<string | null>(null);
   const [visibleLayers, setVisibleLayers] = useState<Record<string, boolean>>(
     () =>
       Object.fromEntries(layers.map((layer) => [layer.id, layer.defaultVisible]))
@@ -75,7 +88,29 @@ export function LayeredMap({ baseImage, baseAlt, layers, mode = "toggle" }: Laye
             )}
           </div>
         ))}
+
+        {/* Markers */}
+        {markers.map((marker) => (
+          <Marker
+            key={marker.id}
+            x={marker.x}
+            y={marker.y}
+            label={marker.label}
+            type={marker.type}
+            onClick={() => setActiveMarkerId(activeMarkerId === marker.id ? null : marker.id)}
+          />
+        ))}
       </div>
+
+      {/* Active marker content */}
+      {activeMarkerId && (() => {
+        const marker = markers.find((m) => m.id === activeMarkerId);
+        return marker ? (
+          <div className="mt-4 border border-border rounded-sm overflow-hidden">
+            {marker.content()}
+          </div>
+        ) : null;
+      })()}
 
       {/* Layer toggle controls */}
       <div className="mt-4 flex flex-wrap gap-2">
