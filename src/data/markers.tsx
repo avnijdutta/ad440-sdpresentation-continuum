@@ -4,6 +4,17 @@ import gymMirrorWallcovering from "../assets/enlarged_floor_plan/gym/materials/g
 import gymPolishedConcrete from "../assets/enlarged_floor_plan/gym/materials/gym_polishedconcrete_flooring.jpg";
 import gymRecycledRubber from "../assets/enlarged_floor_plan/gym/materials/gym_recycledrubber_flooring.jpg";
 import gymWoodgrainLVT from "../assets/enlarged_floor_plan/gym/materials/gym_woodgrainLVT_flooring.jpg";
+import cafeLimePlaster from "../assets/enlarged_floor_plan/cafe/materials/cafe_limeplaster_ceiling.jpg";
+import cafeLinen from "../assets/enlarged_floor_plan/cafe/materials/cafe_linen_ceiling.jpg";
+import cafeLimestone from "../assets/enlarged_floor_plan/cafe/materials/cafe_omanwhitelimestone_counterswalls.jpeg";
+import cafePolishedConcrete from "../assets/enlarged_floor_plan/cafe/materials/cafe_polishedconcrete_flooring.jpg";
+import cafeTeakwood from "../assets/enlarged_floor_plan/cafe/materials/cafe_teakwood_millwork.jpg";
+import cafeRCP from "../assets/enlarged_floor_plan/cafe/cafe_RCPsketch.png";
+import cafeRender from "../assets/enlarged_floor_plan/cafe/cafe_render.png";
+import mezzanineRender from "../assets/mezzanine/indooroutdoor_mezzanine_render.png";
+import mezzanineLimestone from "../assets/mezzanine/materials/mezzanine_omanilimestone_flooring.jpeg";
+import mezzanineSandstone from "../assets/mezzanine/materials/mezzanine_sandstonebricks_planterswalls.jpg";
+import mezzanineTeakwood from "../assets/mezzanine/materials/mezzanine_teakwood_seating.jpg";
 import lobbyRender from "../assets/enlarged_floor_plan/reception_lobby/lobby_render.png";
 import receptionLobbyRCP from "../assets/enlarged_floor_plan/reception_lobby/reception_lobby_RCPsketch.png";
 import receptionRender from "../assets/enlarged_floor_plan/reception_lobby/reception_render.png";
@@ -13,7 +24,7 @@ import receptionOmaniMarble from "../assets/enlarged_floor_plan/reception_lobby/
 import receptionTeakwood from "../assets/enlarged_floor_plan/reception_lobby/materials/reception_teakwood_millwork.jpg";
 import { LayeredMap } from "../components/LayeredMap/LayeredMap";
 import { MaterialDescription } from "../components/ui/MaterialDescription";
-import { gymBase, gymLayers, receptionLobbyBase, receptionLayers, lobbyLayers } from "./enlargedFloorPlanLayers";
+import { gymBase, gymLayers, receptionLobbyBase, receptionLayers, lobbyLayers, cafeBase, cafeLayers, mezzanineBase, mezzanineLayers } from "./enlargedFloorPlanLayers";
 
 export type MarkerContentBlock =
   | { type: "text"; value: string }
@@ -46,7 +57,7 @@ export const markers: MarkerData[] = [
     title: "Reception",
     fullScreen: true,
     content: [
-      { type: "text", value: "Sensory Overlay Map" },
+      { type: "text", value: "Enlarged Floor Plan" },
       {
         type: "component",
         render: () => (
@@ -65,10 +76,10 @@ export const markers: MarkerData[] = [
         render: () => (
           <MaterialDescription
             materials={[
-              { image: receptionAshwood, alt: "Ash wood engineered flooring", title: "Ash Wood Engineered Flooring", description: "Ash Wood Engineered Flooring" },
-              { image: receptionLinen, alt: "Linen ceiling", title: "Linen Ceiling", description: "Linen Ceiling" },
-              { image: receptionOmaniMarble, alt: "Omani marble wall covering", title: "Omani Marble Wall Covering", description: "Omani Marble Wall Covering" },
-              { image: receptionTeakwood, alt: "Teakwood millwork", title: "Teakwood Millwork", description: "Teakwood Millwork" },
+              { image: receptionOmaniMarble, alt: "Omani marble wall covering", title: "Omani Marble", description: "Regionally sourced. Reflects light gently. Durable for high-touch surfaces." },
+              { image: receptionTeakwood, alt: "Teakwood millwork", title: "Wood Base Cladding: Teakwood", description: "Moisture-resistant. Regionally sourced." },
+              { image: receptionLinen, alt: "Linen ceiling", title: "Draped Ceiling Fabric: Linen", description: "Locally sourced. Natural material." },
+              { image: receptionAshwood, alt: "Ash wood engineered flooring", title: "Flooring: Engineered Wood Wide Plank Ash", description: "Comfortable for floor-based exercises. Easy to maintain. Elegant design appeal." },
             ]}
           />
         ),
@@ -97,7 +108,37 @@ export const markers: MarkerData[] = [
     x: 58,
     y: 25,
     title: "Cafe",
-    content: [{ type: "text", value: "Cafe" }],
+    fullScreen: true,
+    content: [
+      { type: "text", value: "Enlarged Floor Plan" },
+      {
+        type: "component",
+        render: () => (
+          <LayeredMap
+            baseImage={cafeBase}
+            baseAlt="Cafe floor plan"
+            layers={cafeLayers}
+            mode="radio"
+          />
+        ),
+      },
+      { type: "image", src: cafeRender, alt: "Cafe render" },
+      { type: "image", src: cafeRCP, alt: "Cafe RCP sketch" },
+      {
+        type: "component",
+        render: () => (
+          <MaterialDescription
+            materials={[
+              { image: cafeLimestone, alt: "Oman white limestone", title: "Omani Limestone", description: "Locally abundant. Excellent thermal properties. Subtle texture." },
+              { image: cafeTeakwood, alt: "Teakwood millwork", title: "Wood Base Cladding: Teakwood", description: "Moisture-resistant. Regionally sourced." },
+              { image: cafeLimePlaster, alt: "Lime plaster ceiling", title: "Lime Plaster Ceiling", description: "Traditional and breathable. Resists cracking in heat cycles. Mineral, matte finish that diffuses light." },
+              { image: cafeLinen, alt: "Linen ceiling", title: "Draped Ceiling Fabric: Linen", description: "Locally sourced. Natural material." },
+              { image: cafePolishedConcrete, alt: "Polished concrete flooring", title: "Flooring: Polished Cement", description: "Extremely durable for commercial use. Stays cool underfoot. Minimal material layering for sustainability. Reflects light softly, enhancing daylight." },
+            ]}
+          />
+        ),
+      },
+    ],
   },
   {
     id: "lobby",
@@ -107,7 +148,7 @@ export const markers: MarkerData[] = [
     title: "Lobby",
     fullScreen: true,
     content: [
-      { type: "text", value: "Sensory Overlay Map" },
+      { type: "text", value: "Enlarged Floor Plan" },
       {
         type: "component",
         render: () => (
@@ -126,10 +167,10 @@ export const markers: MarkerData[] = [
         render: () => (
           <MaterialDescription
             materials={[
-              { image: receptionAshwood, alt: "Ash wood engineered flooring", title: "Ash Wood Engineered Flooring", description: "Ash Wood Engineered Flooring" },
-              { image: receptionLinen, alt: "Linen ceiling", title: "Linen Ceiling", description: "Linen Ceiling" },
-              { image: receptionOmaniMarble, alt: "Omani marble wall covering", title: "Omani Marble Wall Covering", description: "Omani Marble Wall Covering" },
-              { image: receptionTeakwood, alt: "Teakwood millwork", title: "Teakwood Millwork", description: "Teakwood Millwork" },
+              { image: receptionOmaniMarble, alt: "Omani marble wall covering", title: "Omani Marble", description: "Regionally sourced. Reflects light gently. Durable for high-touch surfaces." },
+              { image: receptionTeakwood, alt: "Teakwood millwork", title: "Wood Base Cladding: Teakwood", description: "Moisture-resistant. Regionally sourced." },
+              { image: receptionLinen, alt: "Linen ceiling", title: "Draped Ceiling Fabric: Linen", description: "Locally sourced. Natural material." },
+              { image: receptionAshwood, alt: "Ash wood engineered flooring", title: "Flooring: Engineered Wood Wide Plank Ash", description: "Comfortable for floor-based exercises. Easy to maintain. Elegant design appeal." },
             ]}
           />
         ),
@@ -166,7 +207,34 @@ export const markers: MarkerData[] = [
     x: 56,
     y: 42,
     title: "Indoor/Outdoor\nConnection",
-    content: [{ type: "text", value: "Indoor/Outdoor Connection" }],
+    fullScreen: true,
+    content: [
+      { type: "text", value: "Enlarged Floor Plan" },
+      {
+        type: "component",
+        render: () => (
+          <LayeredMap
+            baseImage={mezzanineBase}
+            baseAlt="Indoor/Outdoor Connection floor plan"
+            layers={mezzanineLayers}
+            mode="radio"
+          />
+        ),
+      },
+      { type: "image", src: mezzanineRender, alt: "Indoor/Outdoor Connection render" },
+      {
+        type: "component",
+        render: () => (
+          <MaterialDescription
+            materials={[
+              { image: mezzanineLimestone, alt: "Omani limestone flooring", title: "Omani Limestone", description: "Locally abundant. Excellent thermal properties. Subtle texture." },
+              { image: mezzanineSandstone, alt: "Sandstone bricks planters and walls", title: "Sandstone Bricks", description: "Sandstone Bricks" },
+              { image: mezzanineTeakwood, alt: "Teakwood seating", title: "Wood Base Cladding: Teakwood", description: "Moisture-resistant. Regionally sourced." },
+            ]}
+          />
+        ),
+      },
+    ],
   },
   {
     id: "lockers-1",

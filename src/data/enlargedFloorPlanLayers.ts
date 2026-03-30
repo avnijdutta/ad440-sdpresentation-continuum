@@ -7,7 +7,7 @@ import type { LayerData } from "./layers";
 
 // Base images
 export { default as gymBase } from "../assets/enlarged_floor_plan/gym/gym_base.png";
-export { default as cafeBase } from "../assets/enlarged_floor_plan/pantry_cafe_base.png";
+export { default as cafeBase } from "../assets/enlarged_floor_plan/cafe/cafe_enlargedplan.png";
 export { default as receptionLobbyBase } from "../assets/enlarged_floor_plan/reception_lobby/reception_lobby_enlargedplan.png";
 
 // Gym layers
@@ -56,3 +56,9 @@ export const receptionLayers: LayerData[] = [];
 
 // Lobby layers (to be added)
 export const lobbyLayers: LayerData[] = [];
+
+// Base images (mezzanine)
+export { default as mezzanineBase } from "../assets/mezzanine/indooroutdoorconnection_enlargedplan.png";
+
+// Mezzanine layers (to be added)
+export const mezzanineLayers: LayerData[] = [];
