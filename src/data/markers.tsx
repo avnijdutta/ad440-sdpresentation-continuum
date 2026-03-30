@@ -1,4 +1,8 @@
 import type { ReactNode } from "react";
+import courtyardRender from "../assets/courtyard/courtyard_render.png";
+import courtyardLimestone from "../assets/courtyard/materials/courtyard_omanilimestone_flooring.jpeg";
+import courtyardSandstone from "../assets/courtyard/materials/courtyard_sandstonebricks_planterswalls.jpg";
+import courtyardTeakwood from "../assets/courtyard/materials/courtyard_teakwood_seating.jpg";
 import cafeRCP from "../assets/enlarged_floor_plan/cafe/cafe_RCPsketch.png";
 import cafeRender from "../assets/enlarged_floor_plan/cafe/cafe_render.png";
 import cafeLimePlaster from "../assets/enlarged_floor_plan/cafe/materials/cafe_limeplaster_ceiling.jpg";
@@ -228,7 +232,7 @@ export const markers: MarkerData[] = [
           <MaterialDescription
             materials={[
               { image: mezzanineLimestone, alt: "Omani limestone flooring", title: "Omani Limestone", description: "Locally abundant. Excellent thermal properties. Subtle texture." },
-              { image: mezzanineSandstone, alt: "Sandstone bricks planters and walls", title: "Sandstone Bricks", description: "Sandstone Bricks" },
+              { image: mezzanineSandstone, alt: "Sandstone bricks planters and walls", title: "Sandstone Bricks", description: "Regional material. Ages naturally for an adaptive look. Durable in fluctuating heat." },
               { image: mezzanineTeakwood, alt: "Teakwood seating", title: "Wood Base Cladding: Teakwood", description: "Moisture-resistant. Regionally sourced." },
             ]}
           />
@@ -360,7 +364,22 @@ export const markers: MarkerData[] = [
     x: 35,
     y: 27,
     title: "Courtyard",
-    content: [{ type: "text", value: "Courtyard" }],
+    fullScreen: true,
+    content: [
+      { type: "image", src: courtyardRender, alt: "Courtyard render" },
+      {
+        type: "component",
+        render: () => (
+          <MaterialDescription
+            materials={[
+              { image: courtyardLimestone, alt: "Omani limestone flooring", title: "Omani Limestone", description: "Locally abundant. Excellent thermal properties. Subtle texture." },
+              { image: courtyardSandstone, alt: "Sandstone bricks planters and walls", title: "Sandstone Bricks", description: "Regional material. Ages naturally for an adaptive look. Durable in fluctuating heat." },
+              { image: courtyardTeakwood, alt: "Teakwood seating", title: "Wood Base Cladding: Teakwood", description: "Moisture-resistant. Regionally sourced." },
+            ]}
+          />
+        ),
+      },
+    ],
   },
   {
     id: "elevators-1",
