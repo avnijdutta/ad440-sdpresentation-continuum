@@ -1,8 +1,8 @@
-import sunDiagram from "../assets/sun_diagram.png";
-import meccaDirection from "../assets/mecca_direction.png";
-import windPatterns from "../assets/wind_patterns.png";
-import surroundingViews from "../assets/surrounding_views.png";
-import siteLocation from "../assets/site_location.png";
+import sunDiagram from "../assets/site_map/sunpath.png";
+import meccaDirection from "../assets/site_map/qibla_direction.png";
+import windPatterns from "../assets/site_map/wind_direction.png";
+import surroundingViews from "../assets/site_map/views.png";
+import siteLocation from "../assets/site_map/site_location.png";
 
 export interface LegendItem {
   color: string;
@@ -24,7 +24,7 @@ export const layers: LayerData[] = [
     src: siteLocation,
     defaultVisible: true,
     legend: [
-      { color: "#6366f1", label: "Site" },
+      { color: "#7B8CDE", label: "Site" },
     ],
   },
   {
@@ -33,8 +33,9 @@ export const layers: LayerData[] = [
     src: surroundingViews,
     defaultVisible: true,
     legend: [
-      { color: "#6b6b78", label: "Surrounding Buildings" },
-      { color: "#1a7a2e", label: "Park" },
+      { color: "#FFB6C1", label: "View Cones" },
+      { color: "#8EA8DB", label: "Bodies of Water" },
+      { color: "#808080", label: "Building" },
     ],
   },
   {
@@ -43,7 +44,7 @@ export const layers: LayerData[] = [
     src: meccaDirection,
     defaultVisible: false,
     legend: [
-      { color: "#cc2b2b", label: "Qibla Direction" },
+      { color: "#000000", label: "Qibla Direction" },
     ],
   },
   {
@@ -52,11 +53,10 @@ export const layers: LayerData[] = [
     src: windPatterns,
     defaultVisible: false,
     legend: [
-      { color: "#c87020", label: "Summer Prevailing Winds" },
-      { color: "#7b2ea0", label: "Winter Prevailing Winds" },
-      { color: "#e03a6e", label: "Winter Prevailing Winds" },
-      { color: "#3a8c1e", label: "Spring Prevailing Winds" },
-      { color: "#3b2080", label: "Shamal Wind Pattern" },
+      { color: "#F28C4E", label: "Summer Prevailing Winds" },
+      { color: "#7B72C8", label: "Shamal Wind Pattern" },
+      { color: "#B5B814", label: "Spring Prevailing Winds" },
+      { color: "#4A86E8", label: "Winter Prevailing Winds" },
     ],
   },
   {
@@ -65,9 +65,8 @@ export const layers: LayerData[] = [
     src: sunDiagram,
     defaultVisible: false,
     legend: [
-      { color: "#dab040", label: "Summer Sun Path" },
-      { color: "#b84a2a", label: "Equinox Sun Path" },
-      { color: "#2d2a7a", label: "Winter Sun Path" },
+      { color: "#F5C542", label: "Summer Solstice Sun Path" },
+      { color: "#4A3F8F", label: "Winter Solstice Sun Path" },
     ],
   },
 ];

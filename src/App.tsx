@@ -4,7 +4,7 @@ import { Section } from "./components/Layout/Section";
 import { FloorPlan } from "./components/FloorPlan/FloorPlan";
 import { LayeredMap } from "./components/LayeredMap/LayeredMap";
 import { layers as siteContextLayers } from "./data/layers";
-import siteMap from "./assets/site_map.png";
+import siteMap from "./assets/site_map/base_map.png";
 import heroImage from "./assets/cafe_render.png";
 
 function App() {
