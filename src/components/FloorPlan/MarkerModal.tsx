@@ -20,7 +20,7 @@ function ContentBlock({ block }: { block: MarkerContentBlock }) {
         <img
           src={block.src}
           alt={block.alt ?? ""}
-          className="w-full rounded-sm object-cover"
+          className="w-full rounded-sm border border-border object-cover"
         />
       );
     case "component":

@@ -4,9 +4,16 @@ import gymMirrorWallcovering from "../assets/enlarged_floor_plan/gym/materials/g
 import gymPolishedConcrete from "../assets/enlarged_floor_plan/gym/materials/gym_polishedconcrete_flooring.jpg";
 import gymRecycledRubber from "../assets/enlarged_floor_plan/gym/materials/gym_recycledrubber_flooring.jpg";
 import gymWoodgrainLVT from "../assets/enlarged_floor_plan/gym/materials/gym_woodgrainLVT_flooring.jpg";
+import lobbyRender from "../assets/enlarged_floor_plan/reception_lobby/lobby_render.png";
+import receptionLobbyRCP from "../assets/enlarged_floor_plan/reception_lobby/reception_lobby_RCPsketch.png";
+import receptionRender from "../assets/enlarged_floor_plan/reception_lobby/reception_render.png";
+import receptionAshwood from "../assets/enlarged_floor_plan/reception_lobby/materials/reception_ashwoodengineered_flooring.jpg";
+import receptionLinen from "../assets/enlarged_floor_plan/reception_lobby/materials/reception_linen_ceiling.jpg";
+import receptionOmaniMarble from "../assets/enlarged_floor_plan/reception_lobby/materials/reception_omanimarble_wallcovering.jpg";
+import receptionTeakwood from "../assets/enlarged_floor_plan/reception_lobby/materials/reception_teakwood_millwork.jpg";
 import { LayeredMap } from "../components/LayeredMap/LayeredMap";
 import { MaterialDescription } from "../components/ui/MaterialDescription";
-import { gymBase, gymLayers } from "./enlargedFloorPlanLayers";
+import { gymBase, gymLayers, receptionLobbyBase, receptionLayers, lobbyLayers } from "./enlargedFloorPlanLayers";
 
 export type MarkerContentBlock =
   | { type: "text"; value: string }
@@ -37,7 +44,36 @@ export const markers: MarkerData[] = [
     x: 23,
     y: 26,
     title: "Reception",
-    content: [{ type: "text", value: "Reception" }],
+    fullScreen: true,
+    content: [
+      { type: "text", value: "Sensory Overlay Map" },
+      {
+        type: "component",
+        render: () => (
+          <LayeredMap
+            baseImage={receptionLobbyBase}
+            baseAlt="Reception floor plan"
+            layers={receptionLayers}
+            mode="radio"
+          />
+        ),
+      },
+      { type: "image", src: receptionRender, alt: "Reception render" },
+      { type: "image", src: receptionLobbyRCP, alt: "Reception and lobby RCP sketch" },
+      {
+        type: "component",
+        render: () => (
+          <MaterialDescription
+            materials={[
+              { image: receptionAshwood, alt: "Ash wood engineered flooring", title: "Ash Wood Engineered Flooring", description: "Ash Wood Engineered Flooring" },
+              { image: receptionLinen, alt: "Linen ceiling", title: "Linen Ceiling", description: "Linen Ceiling" },
+              { image: receptionOmaniMarble, alt: "Omani marble wall covering", title: "Omani Marble Wall Covering", description: "Omani Marble Wall Covering" },
+              { image: receptionTeakwood, alt: "Teakwood millwork", title: "Teakwood Millwork", description: "Teakwood Millwork" },
+            ]}
+          />
+        ),
+      },
+    ],
   },
   {
     id: "gallery",
@@ -69,7 +105,36 @@ export const markers: MarkerData[] = [
     x: 29,
     y: 35,
     title: "Lobby",
-    content: [{ type: "text", value: "Lobby" }],
+    fullScreen: true,
+    content: [
+      { type: "text", value: "Sensory Overlay Map" },
+      {
+        type: "component",
+        render: () => (
+          <LayeredMap
+            baseImage={receptionLobbyBase}
+            baseAlt="Lobby floor plan"
+            layers={lobbyLayers}
+            mode="radio"
+          />
+        ),
+      },
+      { type: "image", src: lobbyRender, alt: "Lobby render" },
+      { type: "image", src: receptionLobbyRCP, alt: "Reception and lobby RCP sketch" },
+      {
+        type: "component",
+        render: () => (
+          <MaterialDescription
+            materials={[
+              { image: receptionAshwood, alt: "Ash wood engineered flooring", title: "Ash Wood Engineered Flooring", description: "Ash Wood Engineered Flooring" },
+              { image: receptionLinen, alt: "Linen ceiling", title: "Linen Ceiling", description: "Linen Ceiling" },
+              { image: receptionOmaniMarble, alt: "Omani marble wall covering", title: "Omani Marble Wall Covering", description: "Omani Marble Wall Covering" },
+              { image: receptionTeakwood, alt: "Teakwood millwork", title: "Teakwood Millwork", description: "Teakwood Millwork" },
+            ]}
+          />
+        ),
+      },
+    ],
   },
   {
     id: "restrooms",
