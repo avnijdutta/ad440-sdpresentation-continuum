@@ -3,7 +3,7 @@ export function Footer() {
     <footer className="border-t border-border">
       <div className="mx-[var(--spacing-margin)] py-[var(--spacing-v-space-sm)]">
         <p className="text-xs text-text-muted">
-          &copy; {new Date().getFullYear()} Continuum
+          &copy; {new Date().getFullYear()} Avni J Dutta
         </p>
       </div>
     </footer>
