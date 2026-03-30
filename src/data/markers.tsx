@@ -23,6 +23,7 @@ import receptionOmaniMarble from "../assets/enlarged_floor_plan/reception_lobby/
 import receptionTeakwood from "../assets/enlarged_floor_plan/reception_lobby/materials/reception_teakwood_millwork.jpg";
 import lobbyWater from "../assets/enlarged_floor_plan/reception_lobby/materials/lobby_water_ceiling.jpg";
 import receptionLobbyRCP from "../assets/enlarged_floor_plan/reception_lobby/reception_lobby_RCPsketch.png";
+import lobbyLogo from "../assets/enlarged_floor_plan/reception_lobby/Logo.png";
 import receptionRender from "../assets/enlarged_floor_plan/reception_lobby/reception_render.png";
 import mezzanineRender from "../assets/mezzanine/indooroutdoor_mezzanine_render.png";
 import mezzanineLimestone from "../assets/mezzanine/materials/mezzanine_omanilimestone_flooring.jpeg";
@@ -181,6 +182,7 @@ export const markers: MarkerData[] = [
           />
         ),
       },
+      { type: "image", src: lobbyLogo, alt: "Lobby logo" },
       { type: "image", src: receptionLobbyRCP, alt: "Reception and lobby RCP sketch" },
     ],
   },
