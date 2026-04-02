@@ -5,16 +5,18 @@ interface FullScreenModalProps {
   open: boolean;
   onClose: () => void;
   children: ReactNode;
+  container?: HTMLElement | null;
 }
 
 export function FullScreenModal({
   open,
   onClose,
   children,
+  container,
 }: FullScreenModalProps) {
   return (
     <Dialog.Root open={open} onOpenChange={(o) => !o && onClose()}>
-      <Dialog.Portal>
+      <Dialog.Portal container={container ?? undefined}>
         <Dialog.Overlay className="fixed inset-0 bg-overlay z-50 animate-overlay-in" />
         <Dialog.Content className="fixed inset-0 z-50 overflow-y-auto bg-bg animate-fade-in focus:outline-none">
           <Dialog.Close

@@ -161,6 +161,7 @@ export function FloorPlan() {
       <MarkerModal
         marker={activeMarker}
         onClose={() => setActiveMarker(null)}
+        container={isFullscreen ? containerRef.current : undefined}
       />
     </div>
   );

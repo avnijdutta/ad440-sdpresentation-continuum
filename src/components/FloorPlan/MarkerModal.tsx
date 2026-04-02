@@ -5,6 +5,7 @@ import type { MarkerData, MarkerContentBlock } from "../../data/markers";
 interface MarkerModalProps {
   marker: MarkerData | null;
   onClose: () => void;
+  container?: HTMLElement | null;
 }
 
 function ContentBlock({ block }: { block: MarkerContentBlock }) {
@@ -44,13 +45,13 @@ function MarkerContent({ marker }: { marker: MarkerData }) {
   );
 }
 
-export function MarkerModal({ marker, onClose }: MarkerModalProps) {
+export function MarkerModal({ marker, onClose, container }: MarkerModalProps) {
   if (!marker) return null;
 
   const Wrapper = marker.fullScreen ? FullScreenModal : Modal;
 
   return (
-    <Wrapper open={!!marker} onClose={onClose}>
+    <Wrapper open={!!marker} onClose={onClose} container={container}>
       <MarkerContent marker={marker} />
     </Wrapper>
   );
