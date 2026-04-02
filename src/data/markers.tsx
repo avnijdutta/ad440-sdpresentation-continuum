@@ -90,6 +90,7 @@ export const markers: MarkerData[] = [
           />
         ),
       },
+      { type: "image", src: lobbyLogo, alt: "Lobby logo" },
       { type: "image", src: receptionLobbyRCP, alt: "Reception and lobby RCP sketch" },
     ],
   },
@@ -182,7 +183,6 @@ export const markers: MarkerData[] = [
           />
         ),
       },
-      { type: "image", src: lobbyLogo, alt: "Lobby logo" },
       { type: "image", src: receptionLobbyRCP, alt: "Reception and lobby RCP sketch" },
     ],
   },
