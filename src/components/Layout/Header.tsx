@@ -2,7 +2,9 @@ const navLinks = [
   { href: "#project-brief", label: "Project Brief" },
   { href: "#site-context", label: "Site Context" },
   { href: "#concept-development", label: "Concept" },
-  { href: "#floor-plan", label: "Floor Plan" },
+  { href: "#old-floor-plan", label: "Old Floor Plan" },
+  { href: "#new-floor-plan", label: "New Floor Plan" },
+  { href: "#materials", label: "Materials" },
 ];
 
 export function Header() {

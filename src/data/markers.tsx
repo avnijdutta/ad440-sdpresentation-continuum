@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import courtyardRender from "../assets/courtyard/courtyard_render.png";
+import courtyardRender from "../assets/courtyard/courtyard_render_watercolor.png";
 import courtyardLimestone from "../assets/courtyard/materials/courtyard_omanilimestone_flooring.jpeg";
 import courtyardSandstone from "../assets/courtyard/materials/courtyard_sandstonebricks_planterswalls.jpg";
 import courtyardTeakwood from "../assets/courtyard/materials/courtyard_teakwood_seating.jpg";
@@ -17,18 +17,24 @@ import gymPolishedConcrete from "../assets/enlarged_floor_plan/gym/materials/gym
 import gymRecycledRubber from "../assets/enlarged_floor_plan/gym/materials/gym_recycledrubber_flooring.jpg";
 import gymWoodgrainLVT from "../assets/enlarged_floor_plan/gym/materials/gym_woodgrainLVT_flooring.jpg";
 import lobbyRender from "../assets/enlarged_floor_plan/reception_lobby/lobby_render.png";
+import lobbyLogo from "../assets/enlarged_floor_plan/reception_lobby/Logo.png";
+import lobbyWater from "../assets/enlarged_floor_plan/reception_lobby/materials/lobby_water_ceiling.jpg";
 import receptionAshwood from "../assets/enlarged_floor_plan/reception_lobby/materials/reception_ashwoodengineered_flooring.jpg";
 import receptionLinen from "../assets/enlarged_floor_plan/reception_lobby/materials/reception_linen_ceiling.jpg";
 import receptionOmaniMarble from "../assets/enlarged_floor_plan/reception_lobby/materials/reception_omanimarble_wallcovering.jpg";
 import receptionTeakwood from "../assets/enlarged_floor_plan/reception_lobby/materials/reception_teakwood_millwork.jpg";
-import lobbyWater from "../assets/enlarged_floor_plan/reception_lobby/materials/lobby_water_ceiling.jpg";
 import receptionLobbyRCP from "../assets/enlarged_floor_plan/reception_lobby/reception_lobby_RCPsketch.png";
-import lobbyLogo from "../assets/enlarged_floor_plan/reception_lobby/Logo.png";
 import receptionRender from "../assets/enlarged_floor_plan/reception_lobby/reception_render.png";
-import mezzanineRender from "../assets/mezzanine/indooroutdoor_mezzanine_render.png";
+import firstFloorImg from "../assets/first_floor.png";
+import firstFloorNewImg from "../assets/first_floor_new.png";
+import groundFloorImg from "../assets/ground_floor.png";
+import groundFloorNewImg from "../assets/ground_floor_new.png";
+import groundFloorRcpImg from "../assets/ground_floor_rcp.png";
 import mezzanineLimestone from "../assets/mezzanine/materials/mezzanine_omanilimestone_flooring.jpeg";
 import mezzanineSandstone from "../assets/mezzanine/materials/mezzanine_sandstonebricks_planterswalls.jpg";
 import mezzanineTeakwood from "../assets/mezzanine/materials/mezzanine_teakwood_seating.jpg";
+import mezzanineRender from "../assets/mezzanine/mezzanine_render_watercolor.png";
+import residentialFloorImg from "../assets/residential_floor.png";
 import { LayeredMap } from "../components/LayeredMap/LayeredMap";
 import { MaterialDescription } from "../components/ui/MaterialDescription";
 import { cafeBase, cafeLayers, gymBase, gymLayers, lobbyLayers, mezzanineBase, mezzanineLayers, receptionLayers, receptionLobbyBase } from "./enlargedFloorPlanLayers";
@@ -46,6 +52,7 @@ export interface MarkerData {
   title: string;
   content: MarkerContentBlock[];
   fullScreen?: boolean;
+  type?: "location" | "elevation" | "button";
 }
 
 export interface FloorData {
@@ -53,6 +60,18 @@ export interface FloorData {
   label: string;
   image: string;
 }
+
+export const oldFloors: FloorData[] = [
+  { id: 1, label: "Ground Floor", image: groundFloorImg },
+  { id: 2, label: "First Floor", image: firstFloorImg },
+];
+
+export const newFloors: FloorData[] = [
+  { id: 1, label: "Ground Floor", image: groundFloorNewImg },
+  { id: 2, label: "First Floor", image: firstFloorNewImg },
+  { id: 3, label: "Residential Floor", image: residentialFloorImg },
+  { id: 4, label: "RCP", image: groundFloorRcpImg },
+];
 
 export const markers: MarkerData[] = [
   // Ground Floor
@@ -474,5 +493,28 @@ export const markers: MarkerData[] = [
     y: 43,
     title: "Indoor/Outdoor\nMezzanine",
     content: [{ type: "text", value: "2-story mezzanine open to below" }],
+  },
+];
+
+const courtyardMarker = markers.find((m) => m.id === "courtyard")!;
+const indoorOutdoorMarker = markers.find((m) => m.id === "indoor-outdoor-connection")!;
+
+export const newFloorPlanMarkers: MarkerData[] = [
+  {
+    ...courtyardMarker,
+    id: "new-courtyard",
+    floor: 1,
+    x: 59.5,
+    y: 33,
+    type: "button",
+  },
+  {
+    ...indoorOutdoorMarker,
+    id: "new-mezzanine",
+    floor: 2,
+    x: 31.8,
+    y: 22,
+    type: "button",
+    title: "Mezzanine",
   },
 ];

@@ -5,8 +5,10 @@ import { FloorPlan } from "./components/FloorPlan/FloorPlan";
 import { LayeredMap } from "./components/LayeredMap/LayeredMap";
 import { Carousel } from "./components/ui/Carousel";
 import { layers as siteContextLayers } from "./data/layers";
+import { markers, newFloorPlanMarkers, oldFloors, newFloors } from "./data/markers";
 import siteMap from "./assets/site_map/base_map.png";
 import heroImage from "./assets/cafe_render.png";
+import materialsSectionMain from "./assets/materials_section_main.png";
 import conceptLeaf from "./assets/concept_development/1_leaf.png";
 import conceptParti from "./assets/concept_development/2_Partis1.jpeg";
 import conceptNegativeSpace from "./assets/concept_development/3_parti_and_model.png";
@@ -115,17 +117,62 @@ function App() {
         />
       </Section>
 
-      {/* Floor Plan */}
-      <Section id="floor-plan">
+      {/* Old Floor Plan */}
+      <Section id="old-floor-plan" className="border-b border-border">
         <div className="mb-[var(--spacing-v-space-sm)]">
           <p className="text-xs font-medium tracking-widest text-accent uppercase mb-2">
             Interactive Map
           </p>
           <h2 className="text-3xl font-semibold tracking-tight">
-            Floor Plan
+            Old Floor Plan
           </h2>
         </div>
-        <FloorPlan />
+        <FloorPlan floors={oldFloors} markers={markers} />
+      </Section>
+
+      {/* New Floor Plan */}
+      <Section id="new-floor-plan" className="border-b border-border">
+        <div className="mb-[var(--spacing-v-space-sm)]">
+          <p className="text-xs font-medium tracking-widest text-accent uppercase mb-2">
+            Interactive Map
+          </p>
+          <h2 className="text-3xl font-semibold tracking-tight">
+            New Floor Plan
+          </h2>
+        </div>
+        <FloorPlan floors={newFloors} markers={newFloorPlanMarkers} />
+      </Section>
+
+      {/* Materials */}
+      <Section id="materials">
+        <div className="mb-[var(--spacing-v-space-sm)]">
+          <p className="text-xs font-medium tracking-widest text-accent uppercase mb-2">
+            Palette
+          </p>
+          <h2 className="text-3xl font-semibold tracking-tight">
+            Materials
+          </h2>
+        </div>
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-[var(--spacing-gutter)] items-start">
+          <div className="lg:col-span-7">
+            <img
+              src={materialsSectionMain}
+              alt="Materials"
+              className="w-full h-auto max-h-[80vh] object-contain"
+            />
+          </div>
+          <div className="lg:col-span-5">
+            <ol className="list-decimal pl-8 space-y-4 text-4xl leading-relaxed text-text-muted marker:text-accent marker:font-medium">
+              <li>Omani Sandstone</li>
+              <li>Wood-look LVT</li>
+              <li>Teakwood</li>
+              <li>Limeplaster</li>
+              <li>Omani Marble</li>
+              <li>Linen</li>
+              <li>Omani Limestone</li>
+            </ol>
+          </div>
+        </div>
       </Section>
 
       <div className="mt-auto">

@@ -6,14 +6,12 @@ import {
 } from "react-zoom-pan-pinch";
 import { Marker } from "./Marker";
 import { MarkerModal } from "./MarkerModal";
-import { markers, type MarkerData } from "../../data/markers";
-import groundFloorImg from "../../assets/ground_floor.png";
-import firstFloorImg from "../../assets/first_floor.png";
+import type { FloorData, MarkerData } from "../../data/markers";
 
-const floors = [
-  { id: 1, label: "Ground Floor", image: groundFloorImg },
-  { id: 2, label: "First Floor", image: firstFloorImg },
-];
+interface FloorPlanProps {
+  floors: FloorData[];
+  markers: MarkerData[];
+}
 
 function fitToView(ref: ReactZoomPanPinchRef, animationMs = 0) {
   const wrapper = ref.instance.wrapperComponent;
@@ -26,8 +24,8 @@ function fitToView(ref: ReactZoomPanPinchRef, animationMs = 0) {
   ref.centerView(scale, animationMs);
 }
 
-export function FloorPlan() {
-  const [activeFloor, setActiveFloor] = useState(1);
+export function FloorPlan({ floors, markers }: FloorPlanProps) {
+  const [activeFloor, setActiveFloor] = useState(floors[0]?.id ?? 1);
   const [activeMarker, setActiveMarker] = useState<MarkerData | null>(null);
   const [isFullscreen, setIsFullscreen] = useState(false);
   const transformRef = useRef<ReactZoomPanPinchRef>(null);
@@ -57,7 +55,7 @@ export function FloorPlan() {
   }, []);
 
   const floorMarkers = markers.filter((m) => m.floor === activeFloor);
-  const currentFloor = floors[activeFloor - 1];
+  const currentFloor = floors.find((f) => f.id === activeFloor) ?? floors[0];
 
   return (
     <div ref={containerRef} className={isFullscreen ? "flex h-screen w-screen flex-col bg-white p-4" : ""}>
@@ -149,6 +147,7 @@ export function FloorPlan() {
                     x={marker.x}
                     y={marker.y}
                     label={marker.title}
+                    type={marker.type}
                     onClick={() => setActiveMarker(marker)}
                   />
                 ))}

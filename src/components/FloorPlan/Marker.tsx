@@ -5,7 +5,7 @@ interface MarkerProps {
   y: number;
   onClick: () => void;
   label: string;
-  type?: "location" | "elevation";
+  type?: "location" | "elevation" | "button";
 }
 
 export function Marker({ x, y, onClick, label, type = "location" }: MarkerProps) {
@@ -19,6 +19,17 @@ export function Marker({ x, y, onClick, label, type = "location" }: MarkerProps)
       >
         <img src={elevationSymbol} alt={label} className="h-7 w-auto" />
       </button>
+    );
+  }
+
+  if (type === "button") {
+    return (
+      <button
+        onClick={onClick}
+        aria-label={label}
+        className="absolute z-10 -translate-x-1/2 -translate-y-1/2 cursor-pointer h-8 w-8 rounded-full bg-red-600 border-2 border-white shadow-md ring-1 ring-red-900/30 transition-transform duration-200 hover:scale-125"
+        style={{ top: `${y}%`, left: `${x}%` }}
+      />
     );
   }
 
